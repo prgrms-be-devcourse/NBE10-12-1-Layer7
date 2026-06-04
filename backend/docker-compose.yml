@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: team07-coffee-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 4321
+      MYSQL_DATABASE: coffee_dev
+    volumes:
+      - coffee-mysql-data:/var/lib/mysql
+volumes:
+  coffee-mysql-data:
