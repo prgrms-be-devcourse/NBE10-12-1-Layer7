@@ -10,6 +10,8 @@
 
 - Thymeleaf
 
+- Next.js
+
 ## 팀원
 
 - 김영선
