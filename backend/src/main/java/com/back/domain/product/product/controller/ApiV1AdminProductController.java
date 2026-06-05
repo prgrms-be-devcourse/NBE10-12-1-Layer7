@@ -58,10 +58,10 @@ public class ApiV1AdminProductController {
     @PutMapping("/{id}")
     @Transactional
     public RsData<Void> modify(
-            @PathVariable Long id,
+            @PathVariable int id,
             @RequestBody @Valid ProductModifyReqBody reqBody
     ) {
-        Product product = productService.findById(id);
+        Product product = productService.findById(id).get();
 
         productService.modify(
                 product,
@@ -80,8 +80,8 @@ public class ApiV1AdminProductController {
     // 상품 삭제
     @DeleteMapping("/{id}")
     @Transactional
-    public RsData<Void> delete(@PathVariable Long id) {
-        Product product = productService.findById(id);
+    public RsData<Void> delete(@PathVariable int id) {
+        Product product = productService.findById(id).get();
         productService.delete(product);
 
         return new RsData<>(

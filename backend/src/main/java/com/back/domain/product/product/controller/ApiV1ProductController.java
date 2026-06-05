@@ -3,10 +3,6 @@ package com.back.domain.product.product.controller;
 import com.back.domain.product.product.dto.ProductDto;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.service.ProductService;
-import com.back.global.rsData.RsData;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +31,7 @@ public class ApiV1ProductController {
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
     public ProductDto getItem(@PathVariable int id) {
-        Product product = productService.findById(id);
+        Product product = productService.findById(id).get();
         return new ProductDto(product);
     }
 }

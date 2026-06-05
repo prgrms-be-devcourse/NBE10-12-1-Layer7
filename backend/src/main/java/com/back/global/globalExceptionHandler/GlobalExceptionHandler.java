@@ -1,9 +1,9 @@
 package com.back.global.globalExceptionHandler;
 
-import com.backend.global.globalExceptionHandler.MemberDuplicateUsernameException;
-import com.backend.global.globalExceptionHandler.ProductNotFoundException;
-import com.backend.global.globalExceptionHandler.UnauthenticatedException;
-import com.backend.global.rsData.RsData;
+import com.back.global.globalExceptionHandler.MemberDuplicateUsernameException;
+import com.back.global.globalExceptionHandler.ProductNotFoundException;
+import com.back.global.globalExceptionHandler.UnauthenticatedException;
+import com.back.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
