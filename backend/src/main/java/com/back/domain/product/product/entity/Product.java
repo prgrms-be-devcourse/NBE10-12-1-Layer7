@@ -1,7 +1,7 @@
 package com.back.domain.product.product.entity;
 
-import com.backend.domain.product.product.entity.ProductCategory;
-import com.backend.global.jpa.entity.BaseEntity;
+import com.back.domain.product.product.entity.ProductCategory;
+import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
