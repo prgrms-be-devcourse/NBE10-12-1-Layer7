@@ -1,7 +1,7 @@
 package com.back.global.initData;
 
 import com.back.domain.product.image.entity.Image;
-import com.back.domain.product.image.rository.ImageRepository;
+import com.back.domain.product.image.repository.ImageRepository;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.repository.ProductRepository;
@@ -26,14 +26,14 @@ public class BaseInitData {
                 "에티오피아",
                 12000,
                 ProductCategory.ETHIOPIA,
-                img1.getId()
+                img1
         ));
 
         productRepository.save(new Product(
                 "브라질",
                 10000,
                 ProductCategory.BRAZIL,
-                img2.getId()
+                img2
         ));
     }
 }

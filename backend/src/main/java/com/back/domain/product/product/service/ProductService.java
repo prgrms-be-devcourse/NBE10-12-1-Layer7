@@ -1,5 +1,8 @@
 package com.back.domain.product.product.service;
 
+
+import com.back.domain.product.image.entity.Image;
+import com.back.domain.product.image.repository.ImageRepository;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.repository.ProductRepository;
@@ -15,6 +18,7 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ImageRepository imageRepository;
 
     public long count() {
         return productRepository.count();
@@ -25,13 +29,11 @@ public class ProductService {
             int price,
             ProductCategory category,
             Long imageId
-    ) {
-        Product product = new Product(
-                beanName,
-                price,
-                category,
-                imageId
-        );
+    )  {
+        Image image = imageRepository.findById(imageId)
+                .orElseThrow(() -> new RuntimeException("이미지 없음"));
+
+        Product product = new Product(beanName, price, category, image);
 
         return productRepository.save(product);
     }
@@ -43,7 +45,10 @@ public class ProductService {
             ProductCategory category,
             Long imageId
     ) {
-        product.modify(beanName, price, category, imageId);
+        Image image = imageRepository.findById(imageId)
+                .orElseThrow(() -> new RuntimeException("이미지 없음"));
+
+        product.modify(beanName, price, category, image);
     }
 
     public Optional<Product> findById(long id) {
@@ -67,7 +72,4 @@ public class ProductService {
         return productRepository.findFirstByOrderByIdDesc();
     }
 
-    public void flush() {
-        productRepository.flush();
-    }
 }
