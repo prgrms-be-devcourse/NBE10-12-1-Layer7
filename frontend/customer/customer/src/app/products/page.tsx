@@ -1,3 +1,4 @@
+import BasePage from "../BasePage";
 import { ProductCard } from "./product-card";
 export default function Page() {
   const products = [
@@ -10,7 +11,7 @@ export default function Page() {
     }
   ];
   return (
-    <>
+    <BasePage>
       <div className="mx-8">
         <h1>상품 목록</h1>
         <div className="my-1">
@@ -33,6 +34,6 @@ export default function Page() {
           </ul>
         </div>
       </div>
-    </>
+    </BasePage>
   );
 }
