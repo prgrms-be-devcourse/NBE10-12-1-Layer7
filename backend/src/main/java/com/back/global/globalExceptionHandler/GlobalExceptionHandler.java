@@ -1,6 +1,9 @@
-package com.backend.global.globalExceptionHandler;
+package com.back.global.globalExceptionHandler;
 
-import com.backend.global.rsData.RsData;
+import com.back.global.globalExceptionHandler.MemberDuplicateUsernameException;
+import com.back.global.globalExceptionHandler.ProductNotFoundException;
+import com.back.global.globalExceptionHandler.UnauthenticatedException;
+import com.back.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -82,6 +85,29 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<RsData<Void>> handle(ProductNotFoundException ex) {
+        return new ResponseEntity<>(
+                new RsData<>(
+                        "404-1",
+                        ex.getMessage()
+                ),
+                NOT_FOUND
+        );
+    }
+
+    @ExceptionHandler(MemberNotFoundException.class)
+    public ResponseEntity<RsData<Void>> handle(MemberNotFoundException ex) {
+        return new ResponseEntity<>(
+                new RsData<>(
+                        "404-1",
+                        ex.getMessage()
+                ),
+                NOT_FOUND
+        );
+    }
+
+
+    @ExceptionHandler(ReceiptNotFoundException.class)
+    public ResponseEntity<RsData<Void>> handle(ReceiptNotFoundException ex) {
         return new ResponseEntity<>(
                 new RsData<>(
                         "404-1",

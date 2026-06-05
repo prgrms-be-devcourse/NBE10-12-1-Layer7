@@ -2,7 +2,7 @@ package com.back.domain.member.service;
 
 import com.back.domain.member.entity.Member;
 import com.back.domain.member.repository.MemberRepository;
-import com.back.global.exception.GlobalExceptionHandler.NotFoundException;
+import com.back.global.globalExceptionHandler.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,13 +33,13 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email)
-                .orElseThrow(() -> new NotFoundException("회원을 찾을 수 없습니다."));
+                .orElseThrow(() -> new MemberNotFoundException("회원을 찾을 수 없습니다."));
     }
 
     // id로 회원 조회
     @Transactional(readOnly = true)
     public Member findById(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("회원을 찾을 수 없습니다."));
+                .orElseThrow(() -> new MemberNotFoundException("회원을 찾을 수 없습니다."));
     }
 }
