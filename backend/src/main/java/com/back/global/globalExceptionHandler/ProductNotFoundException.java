@@ -1,7 +1,7 @@
 package com.back.global.globalExceptionHandler;
 
 public class ProductNotFoundException extends RuntimeException {
-    public ProductNotFoundException(String message) {
-        super("해당 상품이없습니다.");
+    public ProductNotFoundException() {
+        super("해당 상품이 없습니다.");
     }
 }

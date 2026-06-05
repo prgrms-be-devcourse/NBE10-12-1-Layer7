@@ -3,6 +3,7 @@ package com.back.domain.product.product.service;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.repository.ProductRepository;
+import com.back.global.globalExceptionHandler.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,13 @@ public class ProductService {
         product.modify(beanName, price, category, imageId);
     }
 
-    public Optional<Product> findById(int id) {
+    public Optional<Product> findById(long id) {
         return productRepository.findById(id);
+    }
+
+    public Product findByIdOrThrow(long id) {
+        return productRepository.findById(id)
+                .orElseThrow(ProductNotFoundException::new);
     }
 
     public List<Product> findAll() {

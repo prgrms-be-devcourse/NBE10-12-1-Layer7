@@ -6,7 +6,7 @@ import com.back.domain.product.product.entity.ProductCategory;
 import java.time.LocalDateTime;
 
 public record ProductDto(
-      int id,
+      long id,
       LocalDateTime createDate,
       LocalDateTime modifyDate,
       String beanName,

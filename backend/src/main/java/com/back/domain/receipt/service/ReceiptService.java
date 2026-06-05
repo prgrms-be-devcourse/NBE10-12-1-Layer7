@@ -5,7 +5,7 @@ import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.receipt.entity.ReceiptItem;
 import com.back.domain.receipt.repository.ReceiptItemRepository;
 import com.back.domain.receipt.repository.ReceiptRepository;
-import com.back.global.exception.GlobalExceptionHandler.NotFoundException;
+import com.back.global.globalExceptionHandler.ReceiptNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,7 +58,7 @@ public class ReceiptService {
     @Transactional(readOnly = true)
     public Receipt findById(Long id) {
         return receiptRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("주문을 찾을 수 없습니다."));
+                .orElseThrow(() -> new ReceiptNotFoundException("주문을 찾을 수 없습니다."));
     }
 
     // 주문 취소

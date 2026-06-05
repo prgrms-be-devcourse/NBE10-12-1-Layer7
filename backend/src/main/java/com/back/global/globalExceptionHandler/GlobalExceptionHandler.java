@@ -94,5 +94,28 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(MemberNotFoundException.class)
+    public ResponseEntity<RsData<Void>> handle(MemberNotFoundException ex) {
+        return new ResponseEntity<>(
+                new RsData<>(
+                        "404-1",
+                        ex.getMessage()
+                ),
+                NOT_FOUND
+        );
+    }
+
+
+    @ExceptionHandler(ReceiptNotFoundException.class)
+    public ResponseEntity<RsData<Void>> handle(ReceiptNotFoundException ex) {
+        return new ResponseEntity<>(
+                new RsData<>(
+                        "404-1",
+                        ex.getMessage()
+                ),
+                NOT_FOUND
+        );
+    }
+
 
 }
