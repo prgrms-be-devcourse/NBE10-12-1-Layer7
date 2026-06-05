@@ -1,5 +1,6 @@
-package com.backend.domain.product.product.entity;
+package com.back.domain.product.product.entity;
 
+import com.backend.domain.product.product.entity.ProductCategory;
 import com.backend.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

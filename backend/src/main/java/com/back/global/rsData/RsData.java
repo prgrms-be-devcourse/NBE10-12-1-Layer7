@@ -1,4 +1,4 @@
-package com.backend.global.rsData;
+package com.back.global.rsData;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

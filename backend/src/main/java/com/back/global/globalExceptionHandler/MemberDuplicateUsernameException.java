@@ -1,4 +1,4 @@
-package com.backend.global.globalExceptionHandler;
+package com.back.global.globalExceptionHandler;
 
 public class MemberDuplicateUsernameException extends RuntimeException {
     public MemberDuplicateUsernameException(String username) {

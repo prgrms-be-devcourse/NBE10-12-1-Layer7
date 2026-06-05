@@ -1,4 +1,4 @@
-package com.backend.global.globalExceptionHandler;
+package com.back.global.globalExceptionHandler;
 
 public class ProductNotFoundException extends RuntimeException {
     public ProductNotFoundException(String message) {

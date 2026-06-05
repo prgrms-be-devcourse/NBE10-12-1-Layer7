@@ -1,4 +1,4 @@
-package com.backend.domain.product.product.entity;
+package com.back.domain.product.product.entity;
 
 public enum ProductCategory {
     ETHIOPIA,

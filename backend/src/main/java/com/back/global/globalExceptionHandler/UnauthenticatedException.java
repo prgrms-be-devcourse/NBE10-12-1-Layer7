@@ -1,4 +1,4 @@
-package com.backend.global.globalExceptionHandler;
+package com.back.global.globalExceptionHandler;
 
 public class UnauthenticatedException extends RuntimeException {
     public UnauthenticatedException() {
