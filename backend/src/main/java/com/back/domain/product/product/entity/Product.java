@@ -27,4 +27,16 @@ public class Product extends BaseEntity {
         this.imageId = imageId;
     }
 
+    public void modify(
+            String beanName,
+            int price,
+            ProductCategory category,
+            Long imageId
+    ) {
+        this.beanName = beanName;
+        this.price = price;
+        this.category = category;
+        this.imageId = imageId;
+    }
+
 }

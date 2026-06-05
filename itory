@@ -1,0 +1,20 @@
+[33m210c5e8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeat/product[m[33m)[m work2
+[33m97d4279[m name
+[33m489fc75[m work3
+[33m3f54a00[m 작업2
+[33mbeb7542[m 작ì0준비
+[33m17ef8fc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: receipt 구현 (#15) (#16)
+[33m10a45a6[m feat: member 구현 (#13) (#14)
+[33m1752d8e[m Merge pull request #12 from prgrms-be-devcourse/feat/global
+[33m8ff115d[m[33m ([m[1;31morigin/feat/global[m[33m, [m[1;32mfeat/global[m[33m)[m 수정ë²
+[33m6199f40[m global작업
+[33m9b45113[m Docker MySQL 설정 추가
+[33m0fd69ac[m Merge pull request #6 from prgrms-be-devcourse/feat/sql
+[33m545bfd9[m 작ìglobal
+[33mf12e5b4[m Docker MySQL 설정 추가
+[33m4753a19[m Merge pull request #4 from prgrms-be-devcourse/feat/start-frontend
+[33m4bfade1[m chore: admin app setting
+[33m4afa50a[m chore:customer app setting
+[33m568d78e[m[33m ([m[1;32mmain[m[33m)[m beckend 세팅 (#2)
+[33mc78928b[m Update README.md (#1)
+[33md0cb494[m Create README.md
