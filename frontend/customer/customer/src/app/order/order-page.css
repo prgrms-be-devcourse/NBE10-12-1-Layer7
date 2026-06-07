@@ -1,0 +1,45 @@
+@layer components{
+  .order-page{
+    @apply flex gap-4 h-screen p-4 text-gray-900 bg-gray-500;
+  }
+  .order-block{
+    @apply flex gap-6 rounded-3xl bg-white/90 p-3 m-3 shadow-lg;
+  }
+  .order-block h2{
+    @apply text-base font-medium mb-2;
+  }
+  .order-area{
+    @apply flex-[2] flex flex-col min-w-0;
+  }
+  .order-list{
+    @apply flex-1 overflow-y-auto bg-white border border-gray-200 rounded-xl;
+  }
+  .order-summary{
+    @apply flex-1 flex flex-col bg-gray-100 rounded-xl p-5 overflow-y-auto;
+  }
+  .summary-header{
+    @apply text-base font-medium mb-3;
+  }
+  .order-form{
+    @apply flex flex-col gap-3;
+  }
+  .order-form{
+    @apply flex flex-col gap-3 mb-4;
+  }
+  /* 중복? */
+  .order-email{
+    @apply text-xs text-gray-500 mb-1.5 block;
+  }
+  .order-address{
+    @apply text-xs text-gray-500 mb-1.5 block;
+  }
+  .order-postal-code{
+    @apply text-xs text-gray-500 mb-1.5 block;
+  }
+  .order-notice{
+    @apply text-xs text-gray-500 mb-4 leading-relaxed;
+  }
+  .order-button{
+    @apply w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-lg;
+  }
+}

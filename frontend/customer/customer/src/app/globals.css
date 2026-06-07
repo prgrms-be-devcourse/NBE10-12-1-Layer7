@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import './order/order-item.css';
+@import './order/order-page.css';
+
 
 :root {
   --background: #ffffff;
