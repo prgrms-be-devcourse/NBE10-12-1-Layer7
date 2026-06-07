@@ -52,7 +52,7 @@ public class ApiV1MemberController {
     // 내 정보
     @GetMapping("/me")
     @Transactional(readOnly = true)
-    public RsData<MemberDto> me(@RequestParam Long actorId) {
+    public RsData<MemberDto> me(@RequestParam("actorId") Long actorId) {
         Member member = memberService.findById(actorId);
         return new RsData<>("200-1", "내 정보 조회 성공", new MemberDto(member));
     }
