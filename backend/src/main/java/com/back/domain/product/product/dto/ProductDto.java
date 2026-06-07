@@ -23,7 +23,7 @@ public record ProductDto(
                 product.getBeanName(),
                 product.getPrice(),
                 product.getCategory(),
-                product.getImageId()
+                product.getImage() != null ? product.getImage().getId() : null
         );
     }
 }
