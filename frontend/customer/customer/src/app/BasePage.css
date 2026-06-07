@@ -1,12 +1,12 @@
 @layer components{
     .base-page{
-        @apply bg-coffee-bg min-h-screen;
+        @apply bg-coffee-bg flex flex-col h-screen;
     }
     .base-header{
         @apply bg-coffee-nav text-coffee-nav-text;
     }
     .base-nav{
-        @apply flex items-center justify-between;
+        @apply flex items-center justify-between px-8 py-4;
     }
     .nav-service{
         @apply flex items-center gap-6 text-coffee-nav-accent text-2xl;
@@ -15,6 +15,6 @@
         @apply flex gap-2 text-coffee-nav-text text-2xl font-semibold;
     }
     .base-main{
-        @apply bg-coffee-bg flex h-[calc(100vh-120px)] overflow-hidden items-center justify-center;
+        @apply bg-coffee-bg flex-1;
     }
 }
