@@ -1,0 +1,20 @@
+@layer components{
+    .base-page{
+        @apply bg-coffee-bg min-h-screen;
+    }
+    .base-header{
+        @apply bg-coffee-nav text-coffee-nav-text;
+    }
+    .base-nav{
+        @apply flex items-center justify-between;
+    }
+    .nav-service{
+        @apply flex items-center gap-6 text-coffee-nav-accent text-2xl;
+    }
+    .nav-right{
+        @apply flex gap-2 text-coffee-nav-text text-2xl font-semibold;
+    }
+    .base-main{
+        @apply bg-coffee-bg flex h-[calc(100vh-120px)] overflow-hidden items-center justify-center;
+    }
+}

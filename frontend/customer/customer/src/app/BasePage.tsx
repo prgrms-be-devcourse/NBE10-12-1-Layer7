@@ -5,25 +5,27 @@ export default function BasePage({
                                  }: {
     children: React.ReactNode;
 }) {
-    const isLogin = false; // 나중에 로그인 상태로 바꿀 예정
+    const isLogin = true; // 나중에 로그인 상태로 바꿀 예정
 
     return (
-        <div className="min-h-screen bg-lime-400">
-            <header className="bg-gray-300 px-10 py-4">
-                <div className="text-center text-2xl font-semibold">
-                    Navigation_Bar
-                </div>
-
-                <div className="flex items-center justify-between">
+        <div className="base-page">
+            <header className="base-header">
+                <div className="base-nav">
                     <Link href="/" className="text-5xl font-bold">
                         로고
                     </Link>
 
-                    <nav className="flex gap-8 text-2xl font-semibold">
+                    <nav className="nav-service">
                         <Link href="/products">상품 목록</Link>
-                   </nav>
+                        {(isLogin) && (
+                            <>
+                            <Link href="/mypage">마이페이지</Link>
+                            <Link href="/orders">주문 내역</Link>
+                            </>
+                        )}
+                    </nav>
 
-                    <div className="flex gap-2 text-2xl font-semibold">
+                    <div className="nav-right">
                         {isLogin ? (
                             <button>로그아웃</button>
                         ) : (
@@ -36,8 +38,7 @@ export default function BasePage({
                     </div>
                 </div>
             </header>
-
-            <main className="flex min-h-[calc(100vh-120px)] items-center justify-center">
+            <main className="base-main">
                 {children}
             </main>
         </div>
