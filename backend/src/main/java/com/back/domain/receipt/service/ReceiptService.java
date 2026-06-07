@@ -45,7 +45,7 @@ public class ReceiptService {
                 .sum();
         receipt.updateTotalPrice(totalPrice);
 
-        return receipt;
+        return receiptRepository.findById(receipt.getId()).get();
     }
 
     // 회원의 주문 목록 조회
