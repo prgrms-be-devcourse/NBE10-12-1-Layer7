@@ -37,16 +37,16 @@ export default function Page(){
                         <div>
                             <label className="order-email">이메일</label>
                             <input
-                                className="border p-2 rounded w-full"
+                                className="order-text-input"
                                 type="email" 
                                 placeholder="이메일" 
                                 autoFocus
                             />
                         </div>
                         <div>
-                            <label className="text-xs text-gray-500 mb-1.5 block">주소</label>
+                            <label className="order-address">주소</label>
                             <input
-                                className="border p-2 rounded"
+                                className="order-text-input"
                                 type="text"
                                 name="address"
                                 placeholder="주소"
@@ -55,7 +55,7 @@ export default function Page(){
                         <div>
                             <label className="order-postal-code">우편번호</label>
                             <input
-                                className="border p-2 rounded"
+                                className="order-text-input"
                                 type="text"
                                 name="postal_code"
                                 placeholder="우편번호"
