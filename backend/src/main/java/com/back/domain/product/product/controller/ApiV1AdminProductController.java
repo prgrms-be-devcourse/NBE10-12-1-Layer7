@@ -8,6 +8,7 @@ import com.back.domain.product.product.service.ProductService;
 import com.back.global.rsData.RsData;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class ApiV1AdminProductController {
 
     // 상품 생성
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @Transactional
     public RsData<ProductDto> create(@RequestBody @Valid ProductCreateReqBody reqBody) {
 
