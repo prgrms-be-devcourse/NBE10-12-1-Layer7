@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import './BasePage.css';
 @import './products/product-card.css';
+@import './order/order-item.css';
+@import './order/order-page.css';
+
 
 @theme {
   /* 네비게이션 배경색 → bg-coffee-nav */
@@ -30,6 +33,8 @@
   /* 강조 텍스트색 (카테고리, 레이블 등) → text-coffee-accent */
   --color-coffee-accent: #8B5A2B;
 }
+
+
 
 :root {
   --background: #ffffff;
