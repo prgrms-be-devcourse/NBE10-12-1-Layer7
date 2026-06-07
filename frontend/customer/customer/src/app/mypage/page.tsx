@@ -1,39 +1,10 @@
-import Link from "next/link";
+import BasePage from "../BasePage";
 
 export default function MyPage() {
     return (
-        <main className="min-h-screen bg-lime-400">
-            {/* Navigation Bar */}
-            <header className="bg-gray-300 px-10 py-6">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <h1 className="text-5xl font-bold text-white">
-                        로고
-                    </h1>
-
-                    {/* Navigation Menu */}
-                    <nav className="flex flex-col items-center text-white">
-            <span className="text-2xl font-semibold">
-              Navigation_Bar
-            </span>
-
-                        <div className="mt-2 flex gap-10 text-xl font-medium">
-                            <Link href="/menus">상품 목록</Link>
-                            <Link href="/mypage">마이페이지</Link>
-                            <Link href="/orders">주문 내역</Link>
-                        </div>
-                    </nav>
-
-                        {/* Login / Logout */}
-                        <div className="flex gap-4 text-2xl font-semibold text-white">
-                            <button type="button">로그아웃</button>
-                    </div>
-                </div>
-            </header>
-
-            {/* MyPage Content */}
-            <section className="flex justify-center px-6 py-16">
-                <div className="w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl">
+        <BasePage>
+            <main className="flex min-h-screen justify-center bg-lime-400 px-6 py-16">
+                <section className="w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl">
                     <h1 className="mb-10 text-center text-5xl font-bold text-neutral-900">
                         MyPage
                     </h1>
@@ -80,8 +51,8 @@ export default function MyPage() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </BasePage>
     );
 }
