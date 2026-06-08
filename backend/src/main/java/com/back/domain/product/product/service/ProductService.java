@@ -1,6 +1,8 @@
 package com.back.domain.product.product.service;
 
 
+import com.back.domain.product.image.entity.Image;
+import com.back.domain.product.image.repository.ImageRepository;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.repository.ProductRepository;
@@ -15,15 +17,19 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ImageRepository imageRepository;
 
 
     public Product create(
             String beanName,
             int price,
             ProductCategory category,
-            String imageUrl
+            Long imageId
     )  {
-        Product product = new Product(beanName, price, category, imageUrl);
+        Image image = imageRepository.findById(imageId)
+                .orElseThrow(() -> new RuntimeException("이미지 없음"));
+
+        Product product = new Product(beanName, price, category, image);
 
         return productRepository.save(product);
     }
@@ -33,11 +39,12 @@ public class ProductService {
             String beanName,
             int price,
             ProductCategory category,
-            String imageUrl
+            Long imageId
     ) {
+        Image image = imageRepository.findById(imageId)
+                .orElseThrow(() -> new RuntimeException("이미지 없음"));
 
-
-        product.modify(beanName, price, category, imageUrl);
+        product.modify(beanName, price, category, image);
     }
 
 
