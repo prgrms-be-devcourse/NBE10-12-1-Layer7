@@ -2,6 +2,7 @@ package com.back.domain.receipt.controller;
 
 import com.back.domain.member.entity.Member;
 import com.back.domain.member.service.MemberService;
+import com.back.domain.receipt.dto.ReceiptDto;
 import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.receipt.service.ReceiptService;
 import com.back.global.rsData.RsData;
@@ -32,34 +33,38 @@ public class ApiV1ReceiptController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public RsData<Receipt> addItem(
+    public RsData<ReceiptDto> addItem(
             @RequestParam("actorId") Long actorId,
             @Valid @RequestBody AddItemReqBody body
     ) {
         Member member = memberService.findById(actorId);
         Receipt receipt = receiptService.addItem(
                 member, body.productId(), body.quantity(), body.price());
-        return new RsData<>("201-1", "주문이 완료되었습니다.", receipt);
+        return new RsData<>("201-1", "주문이 완료되었습니다.", new ReceiptDto(receipt));
     }
 
     // 내 주문 목록 조회
     @GetMapping
     @Transactional(readOnly = true)
-    public RsData<List<Receipt>> getMyReceipts(@RequestParam("actorId") Long actorId) {
+    public RsData<List<ReceiptDto>> getMyReceipts(@RequestParam("actorId") Long actorId) {
         Member member = memberService.findById(actorId);
         List<Receipt> receipts = receiptService.findByMember(member);
-        return new RsData<>("200-1", "주문 목록 조회 성공", receipts);
+        List<ReceiptDto> receiptDtos = receipts
+                .stream()
+                .map(ReceiptDto::new)
+                .toList();
+        return new RsData<>("200-1", "주문 목록 조회 성공", receiptDtos);
     }
 
     // 주문 상세 조회
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
-    public RsData<Receipt> getReceipt(
+    public RsData<ReceiptDto> getReceipt(
             @RequestParam("actorId") Long actorId,
             @PathVariable("id") Long id
     ) {
         Receipt receipt = receiptService.findById(id);
-        return new RsData<>("200-1", "주문 조회 성공", receipt);
+        return new RsData<>("200-1", "주문 조회 성공", new ReceiptDto(receipt));
     }
 
     // 주문 취소
