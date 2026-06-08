@@ -1,9 +1,12 @@
-'use client';
+
+"use client";
+
 import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
 import { Member } from "@/type/members";
 import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
+
 
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
@@ -28,6 +31,7 @@ export default function MyPage() {
     return (
         <BasePage>
             <main className="flex min-h-screen justify-center px-6 py-16">
+
                 <section className="w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl">
                     <h1 className="mb-10 text-center text-5xl font-bold text-neutral-900">
                         MyPage
@@ -39,8 +43,9 @@ export default function MyPage() {
                                 Email
                             </p>
 
-                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                {member?.email}
+                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
+                                {member?.email ?? "회원 정보를 불러오는 중입니다."}
+
                             </div>
                         </div>
 
@@ -48,9 +53,8 @@ export default function MyPage() {
                             <p className="mb-2 text-xl font-semibold">
                                 주소
                             </p>
-
-                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                {member?.address}
+                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
+                                {member?.address ?? "회원 정보를 불러오는 중입니다."}
                             </div>
                         </div>
 
@@ -58,9 +62,8 @@ export default function MyPage() {
                             <p className="mb-2 text-xl font-semibold">
                                 우편번호
                             </p>
-
-                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                {member?.postalCode}
+                            <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
+                                {member?.postalCode ?? "회원 정보를 불러오는 중입니다."}
                             </div>
                         </div>
 
