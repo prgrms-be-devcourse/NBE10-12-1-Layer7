@@ -2,6 +2,7 @@ package com.back.domain.member.service;
 
 import com.back.domain.member.entity.Member;
 import com.back.domain.member.repository.MemberRepository;
+import com.back.global.globalExceptionHandler.MemberDuplicateUsernameException;
 import com.back.global.globalExceptionHandler.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +26,9 @@ public class MemberService {
     // 회원가입
     @Transactional
     public Member join(String email, String password, String address, String postalCode) {
+        if (memberRepository.findByEmail(email).isPresent()) {
+            throw new MemberDuplicateUsernameException("이미 사용 중인 이메일입니다.");
+        }
         String encodedPassword = passwordEncoder.encode(password);
         Member member = new Member(email, encodedPassword, address, postalCode);
         return memberRepository.save(member);

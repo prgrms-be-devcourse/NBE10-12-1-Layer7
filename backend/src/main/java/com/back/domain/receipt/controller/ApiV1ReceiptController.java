@@ -25,8 +25,8 @@ public class ApiV1ReceiptController {
 
     record AddItemReqBody(
             @NotNull Long productId,
-            @NotNull Integer quantity,
-            @NotNull Integer price
+            @NotNull Integer quantity
+            // price 제거 ← 백엔드에서 조회
     ) {}
 
     // 주문 생성 또는 상품 추가
@@ -39,7 +39,7 @@ public class ApiV1ReceiptController {
     ) {
         Member member = memberService.findById(actorId);
         Receipt receipt = receiptService.addItem(
-                member, body.productId(), body.quantity(), body.price());
+                member, body.productId(), body.quantity());  // price 제거
         return new RsData<>("201-1", "주문이 완료되었습니다.", new ReceiptDto(receipt));
     }
 
@@ -85,7 +85,7 @@ public class ApiV1ReceiptController {
     public RsData<?> getTodayReceipt(@RequestParam("actorId") Long actorId) {
         Member member = memberService.findById(actorId);
         return receiptService.findTodayPendingReceipt(member)
-                .map(r -> new RsData<>("200-1", "오늘 미처리 주문 조회 성공", r))
+                .map(r -> new RsData<>("200-1", "오늘 미처리 주문 조회 성공", new ReceiptDto(r)))
                 .orElse(new RsData<>("404-1", "오늘 미처리 주문이 없습니다.", null));
     }
 }

@@ -1,6 +1,8 @@
 package com.back.domain.receipt.service;
 
 import com.back.domain.member.entity.Member;
+import com.back.domain.product.product.entity.Product;
+import com.back.domain.product.product.service.ProductService;
 import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.receipt.entity.ReceiptItem;
 import com.back.domain.receipt.repository.ReceiptItemRepository;
@@ -20,11 +22,16 @@ public class ReceiptService {
 
     private final ReceiptRepository receiptRepository;
     private final ReceiptItemRepository receiptItemRepository;
+    private final ProductService productService;
 
     // 주문 생성 또는 상품 추가
     @Transactional
-    public Receipt addItem(Member member, Long productId, int quantity, int price) {
+    public Receipt addItem(Member member, Long productId, int quantity) {
         LocalDate deliveryDate = Receipt.calcDeliveryDate();
+
+        // 상품 가격 조회
+        Product product = productService.findByIdOrThrow(productId);
+        int price = product.getPrice();
 
         Receipt receipt = receiptRepository
                 .findByMemberAndDeliveryDate(member, deliveryDate)
