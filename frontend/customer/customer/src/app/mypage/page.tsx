@@ -14,6 +14,13 @@ type Member = {
     postalCode: string;
 };
 
+type Member = {
+    id: number;
+    email: string;
+    address: string;
+    postalCode: string;
+};
+
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
     const router = useRouter();
