@@ -93,4 +93,12 @@ public class ReceiptService {
         return receiptRepository.findByMemberAndDeliveryDateAndStatus(
                 member, deliveryDate, "PENDING");
     }
+
+    // 오후 2시 배치 처리
+    @Transactional
+    public void processPendingReceipts() {
+        LocalDate today = LocalDate.now();
+        receiptRepository.findByDeliveryDateAndStatus(today, "PENDING")
+                .forEach(receipt -> receipt.updateStatus("PROCESSING"));
+    }
 }
