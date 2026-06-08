@@ -33,7 +33,7 @@ public class ApiV1ReceiptController {
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
     public RsData<Receipt> addItem(
-            @RequestParam Long actorId,
+            @RequestParam("actorId") Long actorId,
             @Valid @RequestBody AddItemReqBody body
     ) {
         Member member = memberService.findById(actorId);
@@ -45,7 +45,7 @@ public class ApiV1ReceiptController {
     // 내 주문 목록 조회
     @GetMapping
     @Transactional(readOnly = true)
-    public RsData<List<Receipt>> getMyReceipts(@RequestParam Long actorId) {
+    public RsData<List<Receipt>> getMyReceipts(@RequestParam("actorId") Long actorId) {
         Member member = memberService.findById(actorId);
         List<Receipt> receipts = receiptService.findByMember(member);
         return new RsData<>("200-1", "주문 목록 조회 성공", receipts);
@@ -55,8 +55,8 @@ public class ApiV1ReceiptController {
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
     public RsData<Receipt> getReceipt(
-            @RequestParam Long actorId,
-            @PathVariable Long id
+            @RequestParam("actorId") Long actorId,
+            @PathVariable("id") Long id
     ) {
         Receipt receipt = receiptService.findById(id);
         return new RsData<>("200-1", "주문 조회 성공", receipt);
@@ -66,8 +66,8 @@ public class ApiV1ReceiptController {
     @DeleteMapping("/{id}")
     @Transactional
     public RsData<Void> cancel(
-            @RequestParam Long actorId,
-            @PathVariable Long id
+            @RequestParam("actorId") Long actorId,
+            @PathVariable("id") Long id
     ) {
         Receipt receipt = receiptService.findById(id);
         receiptService.cancel(receipt);

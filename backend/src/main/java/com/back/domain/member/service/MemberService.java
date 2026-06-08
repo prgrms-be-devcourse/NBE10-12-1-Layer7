@@ -17,6 +17,11 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional(readOnly = true)
+    public long count() {
+        return memberRepository.count();
+    }
+
     // 회원가입
     @Transactional
     public Member join(String email, String password, String address, String postalCode) {

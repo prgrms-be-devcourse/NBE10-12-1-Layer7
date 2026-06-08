@@ -34,7 +34,7 @@ public class ApiV1AdminReceiptController {
     @PutMapping("/{id}")
     @Transactional
     public RsData<Void> updateStatus(
-            @PathVariable Long id,
+            @PathVariable("id") Long id,
             @Valid @RequestBody UpdateStatusReqBody body
     ) {
         Receipt receipt = receiptService.findById(id);
@@ -45,7 +45,7 @@ public class ApiV1AdminReceiptController {
     // 주문 삭제
     @DeleteMapping("/{id}")
     @Transactional
-    public RsData<Void> delete(@PathVariable Long id) {
+    public RsData<Void> delete(@PathVariable("id") Long id) {
         Receipt receipt = receiptService.findById(id);
         receiptService.delete(receipt);
         return new RsData<>("200-1", "주문이 삭제되었습니다.", null);
