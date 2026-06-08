@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import './BasePage.css';
 @import './products/product-card.css';
+@import './products/product-page.css';
 @import './order/order-item.css';
 @import './order/order-page.css';
-
 
 @theme {
   /* 네비게이션 배경색 → bg-coffee-nav */
