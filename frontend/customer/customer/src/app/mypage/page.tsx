@@ -3,15 +3,13 @@
 
 import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
-import { Member } from "@/type/members";
 import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
-
+import { Member } from "@/type/members";
 
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
     const router = useRouter();
-
 
     useEffect(() => {
         apiFetch(`/api/v1/members/my`,{ 
@@ -24,14 +22,16 @@ export default function MyPage() {
             const actorId = data.data;
             return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
             })
-            .then((res)=>{setMember(res.data);});
-}, []);
+            .then((res)=>{setMember(res.data);})
+            .catch((error) => {
+                console.error(error);
+                alert("회원 정보를 불러오지 못했습니다.");
+            })}, []);
 
 
     return (
         <BasePage>
             <main className="flex min-h-screen justify-center px-6 py-16">
-
                 <section className="w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl">
                     <h1 className="mb-10 text-center text-5xl font-bold text-neutral-900">
                         MyPage
@@ -42,7 +42,6 @@ export default function MyPage() {
                             <p className="mb-2 text-xl font-semibold">
                                 Email
                             </p>
-
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
                                 {member?.email ?? "회원 정보를 불러오는 중입니다."}
 
