@@ -1,0 +1,14 @@
+@layer components{
+    .products-page {
+        @apply flex flex-col flex-1 px-16 py-4 gap-3 max-w-6xl mx-auto w-full;
+    }
+    .products-header {
+        @apply text-lg font-medium text-coffee-primary;
+    }
+    .products-block {
+        @apply flex-1 overflow-y-auto;
+    }
+    .product-list{
+        @apply grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2;
+    }
+}
