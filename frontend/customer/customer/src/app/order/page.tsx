@@ -1,5 +1,6 @@
 "use client";
-import { apiFetch, isLogin } from "@/lib/backend/client";
+
+import { apiFetch } from "@/lib/backend/client";
 import { CartItem } from "./cart-item";
 import { OrderItem } from "./order-item";
 import { useEffect, useState } from "react";
@@ -80,7 +81,9 @@ export default function OrderPage({
 
                     <form className="order-form">
                         <div>
-                            <label className="order-label">이메일</label>
+                            <label className="order-label">
+                                이메일
+                            </label>
                             <input
                                 className="order-text-input"
                                 type="email"
@@ -92,7 +95,9 @@ export default function OrderPage({
                         </div>
 
                         <div>
-                            <label className="order-label">주소</label>
+                            <label className="order-label">
+                                주소
+                            </label>
                             <input
                                 className="order-text-input"
                                 type="text"
@@ -104,7 +109,9 @@ export default function OrderPage({
                         </div>
 
                         <div>
-                            <label className="order-label">우편번호</label>
+                            <label className="order-label">
+                                우편번호
+                            </label>
                             <input
                                 className="order-text-input"
                                 type="text"
@@ -116,21 +123,26 @@ export default function OrderPage({
                         </div>
 
                         <p className="order-notice">
-                            매일 전날 오후 2시부터 당일 오후 2시까지의 주문을 모아서 처리합니다.
+                            매일 전날 오후 2시부터 당일 오후
+                            2시까지의 주문을 모아서 처리합니다.
                         </p>
 
                         <div className="order-price">
                             <span>총금액</span>
-                            <strong>{totalPrice.toLocaleString()}원</strong>
+                            <strong>
+                                {totalPrice.toLocaleString()}원
+                            </strong>
                         </div>
 
-                        <button type="submit" className="order-button">
+                        <button
+                            type="submit"
+                            className="order-button"
+                        >
                             결제하기
                         </button>
                     </form>
                 </aside>
             </div>
         </section>
-      
     );
 }
