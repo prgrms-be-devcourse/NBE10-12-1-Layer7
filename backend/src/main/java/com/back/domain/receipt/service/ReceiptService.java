@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,12 +26,10 @@ public class ReceiptService {
     public Receipt addItem(Member member, Long productId, int quantity, int price) {
         LocalDate deliveryDate = Receipt.calcDeliveryDate();
 
-        // 같은 이메일 + 같은 배송기준일 주문 조회
         Receipt receipt = receiptRepository
                 .findByMemberAndDeliveryDate(member, deliveryDate)
                 .orElseGet(() -> receiptRepository.save(new Receipt(member, deliveryDate)));
 
-        // 같은 상품이 있으면 수량 증가
         receiptItemRepository.findByReceiptAndProductId(receipt, productId)
                 .ifPresentOrElse(
                         item -> item.updateQuantity(item.getQuantity() + quantity),
@@ -38,14 +37,13 @@ public class ReceiptService {
                                 new ReceiptItem(receipt, productId, quantity, price))
                 );
 
-        // 총 금액 업데이트
         int totalPrice = receiptItemRepository.findByReceipt(receipt)
                 .stream()
                 .mapToInt(item -> item.getPrice() * item.getQuantity())
                 .sum();
         receipt.updateTotalPrice(totalPrice);
 
-        return receipt;
+        return receiptRepository.findById(receipt.getId()).get();
     }
 
     // 회원의 주문 목록 조회
@@ -64,6 +62,9 @@ public class ReceiptService {
     // 주문 취소
     @Transactional
     public void cancel(Receipt receipt) {
+        receiptItemRepository.findByReceipt(receipt)
+                .forEach(item -> item.updateQuantity(0));
+        receipt.updateTotalPrice(0);
         receipt.updateStatus("CANCELLED");
     }
 
@@ -83,5 +84,13 @@ public class ReceiptService {
     @Transactional
     public void delete(Receipt receipt) {
         receiptRepository.delete(receipt);
+    }
+
+    // 오늘 미처리 주문 조회
+    @Transactional(readOnly = true)
+    public Optional<Receipt> findTodayPendingReceipt(Member member) {
+        LocalDate deliveryDate = Receipt.calcDeliveryDate();
+        return receiptRepository.findByMemberAndDeliveryDateAndStatus(
+                member, deliveryDate, "PENDING");
     }
 }

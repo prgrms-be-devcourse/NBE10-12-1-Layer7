@@ -1,0 +1,37 @@
+@layer components {
+  .order-item {
+    @apply flex items-center gap-4 border-b border-coffee-border bg-coffee-card px-4 py-3 last:border-b-0;
+  }
+
+  .order-item-img {
+    @apply relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-coffee-border bg-coffee-bg;
+  }
+  .order-item-desc {
+    @apply min-w-0 flex-1;
+  }
+
+  .item-category {
+    @apply mb-1 text-sm font-medium text-coffee-accent;
+  }
+
+  .item-name {
+    @apply truncate text-base font-semibold text-coffee-primary;
+  }
+
+  .item-price {
+    @apply mr-4 whitespace-nowrap text-base font-bold text-coffee-primary;
+  }
+
+  .order-item-quantity {
+    @apply grid h-10 flex-shrink-0 grid-cols-[40px_44px_40px] overflow-hidden rounded-md border border-coffee-border bg-white;
+  }
+
+  .quantity-button-m,
+  .quantity-button-p {
+    @apply grid place-items-center bg-coffee-bg text-lg font-bold text-coffee-secondary transition hover:bg-coffee-border;
+  }
+
+  .item-quantity {
+    @apply grid place-items-center border-x border-coffee-border text-base font-semibold text-coffee-primary;
+  }
+}

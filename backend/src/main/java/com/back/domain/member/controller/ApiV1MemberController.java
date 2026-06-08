@@ -1,5 +1,6 @@
 package com.back.domain.member.controller;
 
+import com.back.domain.member.dto.MemberDto;
 import com.back.domain.member.entity.Member;
 import com.back.domain.member.service.MemberService;
 import com.back.global.rsData.RsData;
@@ -51,8 +52,8 @@ public class ApiV1MemberController {
     // 내 정보
     @GetMapping("/me")
     @Transactional(readOnly = true)
-    public RsData<Member> me(@RequestParam Long actorId) {
+    public RsData<MemberDto> me(@RequestParam("actorId") Long actorId) {
         Member member = memberService.findById(actorId);
-        return new RsData<>("200-1", "내 정보 조회 성공", member);
+        return new RsData<>("200-1", "내 정보 조회 성공", new MemberDto(member));
     }
 }

@@ -30,7 +30,7 @@ public class ApiV1ProductController {
     // 상품 상세 조회
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
-    public ProductDto getItem(@PathVariable long id) {
+    public ProductDto getItem(@PathVariable("id") long id) {
         Product product = productService.findByIdOrThrow(id);
         return new ProductDto(product);
     }

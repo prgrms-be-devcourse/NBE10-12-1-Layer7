@@ -4,6 +4,7 @@ import com.back.domain.member.entity.Member;
 import com.back.domain.member.repository.MemberRepository;
 import com.back.global.globalExceptionHandler.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +15,18 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    @Transactional(readOnly = true)
+    public long count() {
+        return memberRepository.count();
+    }
 
     // 회원가입
     @Transactional
     public Member join(String email, String password, String address, String postalCode) {
-        Member member = new Member(email, password, address, postalCode);
+        String encodedPassword = passwordEncoder.encode(password);
+        Member member = new Member(email, encodedPassword, address, postalCode);
         return memberRepository.save(member);
     }
 
@@ -26,7 +34,7 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Optional<Member> login(String email, String password) {
         return memberRepository.findByEmail(email)
-                .filter(m -> m.getPassword().equals(password));
+                .filter(m -> passwordEncoder.matches(password, m.getPassword()));
     }
 
     // 이메일로 회원 조회

@@ -1,14 +1,14 @@
 package com.back.domain.product.product.controller;
 
+import com.back.domain.product.product.dto.ProductCreateReqBody;
 import com.back.domain.product.product.dto.ProductDto;
+import com.back.domain.product.product.dto.ProductModifyReqBody;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.service.ProductService;
-import com.back.domain.product.product.entity.ProductCategory;
 import com.back.global.rsData.RsData;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ApiV1AdminProductController {
 
-    private final com.back.domain.product.product.service.ProductService productService;
+    private final ProductService productService;
 
-    // DTO - 생성
-    public record ProductCreateReqBody(
-            @NotBlank String beanName,
-            int price,
-            @NotNull ProductCategory category,
-            Long imageId
-    ) {}
-
-    // DTO - 수정
-    public record ProductModifyReqBody(
-            @NotBlank String beanName,
-            int price,
-            @NotNull ProductCategory category,
-            Long imageId
-    ) {}
 
     // 상품 생성
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @Transactional
     public RsData<ProductDto> create(@RequestBody @Valid ProductCreateReqBody reqBody) {
 
@@ -58,7 +44,7 @@ public class ApiV1AdminProductController {
     @PutMapping("/{id}")
     @Transactional
     public RsData<Void> modify(
-            @PathVariable long id,
+            @PathVariable("id") long id,
             @RequestBody @Valid ProductModifyReqBody reqBody
     ) {
         Product product = productService.findByIdOrThrow(id);
@@ -80,7 +66,7 @@ public class ApiV1AdminProductController {
     // 상품 삭제
     @DeleteMapping("/{id}")
     @Transactional
-    public RsData<Void> delete(@PathVariable long id) {
+    public RsData<Void> delete(@PathVariable("id") long id) {
         Product product = productService.findByIdOrThrow(id);
         productService.delete(product);
 
