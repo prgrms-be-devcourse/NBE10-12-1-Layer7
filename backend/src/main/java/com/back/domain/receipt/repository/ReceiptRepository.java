@@ -19,4 +19,7 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
     // 오늘 미처리 주문 조회
     Optional<Receipt> findByMemberAndDeliveryDateAndStatus(
             Member member, LocalDate deliveryDate, String status);
+
+    // 배치 처리용 - 특정 날짜 PENDING 주문 조회
+    List<Receipt> findByDeliveryDateAndStatus(LocalDate deliveryDate, String status);
 }
