@@ -73,4 +73,14 @@ public class ApiV1ReceiptController {
         receiptService.cancel(receipt);
         return new RsData<>("200-1", "주문이 취소되었습니다.", null);
     }
+
+    // 오늘 미처리 주문 조회
+    @GetMapping("/today")
+    @Transactional(readOnly = true)
+    public RsData<?> getTodayReceipt(@RequestParam("actorId") Long actorId) {
+        Member member = memberService.findById(actorId);
+        return receiptService.findTodayPendingReceipt(member)
+                .map(r -> new RsData<>("200-1", "오늘 미처리 주문 조회 성공", r))
+                .orElse(new RsData<>("404-1", "오늘 미처리 주문이 없습니다.", null));
+    }
 }
