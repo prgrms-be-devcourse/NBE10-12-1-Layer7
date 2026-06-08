@@ -7,6 +7,7 @@ import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
 import { Member } from "@/type/members";
 import { Receipts } from "@/type/receipts";
+import { ReceiptList } from "../receipts/receipt-list";
 
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
@@ -83,15 +84,9 @@ export default function MyPage() {
 
                             <div className="min-h-[200px] rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-6 text-neutral-400">
                                 {receipts?.length ?? "주문 내역 정보를 불러오는 중입니다."}
-                                <ul>
-                                    {receipts?.map((receipt)=>(
-                                        <li>
-                                            <div>{receipt.status}</div>
-                                            <div>{receipt.totalPrice}</div>
-                                            <div>{receipt.email}</div>
-                                        </li>
-                                    ))}
-                                </ul>
+                                {receipts && receipts.length > 0 && (
+                                    <ReceiptList receipts={receipts} />
+                                   )}
                             </div>
                         </div>
                     </div>
