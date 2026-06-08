@@ -6,23 +6,11 @@ import BasePage from "../BasePage";
 import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
 import { Member } from "@/type/members";
-
-type Member = {
-    id: number;
-    email: string;
-    address: string;
-    postalCode: string;
-};
-
-type Member = {
-    id: number;
-    email: string;
-    address: string;
-    postalCode: string;
-};
+import { Receipts } from "@/type/receiotId";
 
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
+    const [receipts, setRecipts] = useState<Receipts[]>();
     const router = useRouter();
 
     useEffect(() => {
@@ -33,10 +21,17 @@ export default function MyPage() {
             "Content-Type": "application/json; charset=utf-8",
         },})
             .then((data) => {
-            const actorId = data.data;
-            return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
+                const actorId = data.data;
+                return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
             })
-            .then((res)=>{setMember(res.data);})
+            .then((res)=>{
+                const actorId = res.data.id;
+                setMember(res.data);
+                return apiFetch(`/api/v1/receipts?actorId=${actorId}`)
+            })
+            .then((data) => {
+                setRecipts(data.data);
+            })
             .catch((error) => {
                 console.error(error);
                 alert("회원 정보를 불러오지 못했습니다.");
@@ -53,7 +48,7 @@ export default function MyPage() {
 
                     <div className="space-y-8">
                         <div>
-                            <p className="mb-2 text-xl font-semibold">
+                            <p className="mb-2 text-xl font-semibold text-coffee-nav-accent">
                                 Email
                             </p>
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
@@ -63,7 +58,7 @@ export default function MyPage() {
                         </div>
 
                         <div>
-                            <p className="mb-2 text-xl font-semibold">
+                            <p className="mb-2 text-xl font-semibold text-coffee-nav-accent">
                                 주소
                             </p>
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
@@ -72,7 +67,7 @@ export default function MyPage() {
                         </div>
 
                         <div>
-                            <p className="mb-2 text-xl font-semibold">
+                            <p className="mb-2 text-xl font-semibold text-coffee-nav-accent">
                                 우편번호
                             </p>
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-700">
@@ -82,12 +77,21 @@ export default function MyPage() {
 
                         {/* 주문 내역 */}
                         <div className="pt-6">
-                            <p className="mb-3 text-2xl font-semibold">
+                            <p className="mb-3 text-2xl font-semibold text-coffee-nav-accent">
                                 주문 내역
                             </p>
 
                             <div className="min-h-[200px] rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-6 text-neutral-400">
-                                주문 내역 영역
+                                {receipts?.length ?? "주문 내역 정보를 불러오는 중입니다."}
+                                <ul>
+                                    {receipts?.map((receipt)=>(
+                                        <li>
+                                            <div>{receipt.status}</div>
+                                            <div>{receipt.totalPrice}</div>
+                                            <div>{receipt.email}</div>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </div>
