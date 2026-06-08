@@ -1,32 +1,37 @@
-@layer components{
-    .order-item{
-    @apply flex items-center gap-4 bg-white border border-gray-200 rounded-xl p-3;
+@layer components {
+  .order-item {
+    @apply flex items-center gap-4 border-b border-coffee-border bg-coffee-card px-4 py-3 last:border-b-0;
   }
-  .order-item-img{
-    @apply w-16 h-16 bg-gray-100 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden dark:invert;
+
+  .order-item-img {
+    @apply relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-coffee-border bg-coffee-bg;
   }
-  .order-item-desc{
-    @apply flex-1 min-w-0;
+  .order-item-desc {
+    @apply min-w-0 flex-1;
   }
-  .item-category{
-    @apply text-xs text-gray-400 mb-1;
+
+  .item-category {
+    @apply mb-1 text-sm font-medium text-coffee-accent;
   }
-  .item-name{
-    @apply text-sm font-medium text-gray-900 truncate;
+
+  .item-name {
+    @apply truncate text-base font-semibold text-coffee-primary;
   }
-  .item-price{
-    @apply text-sm font-medium text-gray-900 whitespace-nowrap mr-6
+
+  .item-price {
+    @apply mr-4 whitespace-nowrap text-base font-bold text-coffee-primary;
   }
-  .order-item-quantity{
-    @apply flex items-center border border-gray-300 rounded-lg overflow-hidden flex-shrink-0;
+
+  .order-item-quantity {
+    @apply grid h-10 flex-shrink-0 grid-cols-[40px_44px_40px] overflow-hidden rounded-md border border-coffee-border bg-white;
   }
-  .quantity-button-m{
-    @apply w-9 h-9 bg-gray-50 flex items-center justify-center;
+
+  .quantity-button-m,
+  .quantity-button-p {
+    @apply grid place-items-center bg-coffee-bg text-lg font-bold text-coffee-secondary transition hover:bg-coffee-border;
   }
-  .item-quantity{
-    @apply w-10 h-9 flex items-center justify-center text-sm font-medium border-x border-gray-200;
-  }
-  .quantity-button-p{
-    @apply w-9 h-9 bg-gray-50 flex items-center justify-center;
+
+  .item-quantity {
+    @apply grid place-items-center border-x border-coffee-border text-base font-semibold text-coffee-primary;
   }
 }
