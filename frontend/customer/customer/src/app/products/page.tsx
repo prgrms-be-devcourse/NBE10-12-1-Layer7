@@ -5,7 +5,7 @@ import { CartFAB } from "./cart-fab";
 import { ProductCard } from "./product-card";
 import Image from 'next/image';
 import OrderPage from '../order/page';
-import { apiFetch } from "@/lib/backend/client";
+import { apiFetch, getUrl } from "@/lib/backend/client";
 import { Product, ProductDto, toProduct } from "@/type/products";
 import { CartItem } from "../order/cart-item";
 
@@ -63,7 +63,7 @@ const decreaseQuantity = (productId: number) => {
             <ul className="product-list">
               {products ? products.map((product) => (
                 <li key={product.id}>
-                  <ProductCard name={product.beanName} onClick={() => addToCart(toProduct(product))} {...product} />
+                  <ProductCard name={product.beanName} imageUrl={getUrl(product.image?.url??"")} onClick={() => addToCart(toProduct(product))} {...product} />
                 </li>
               )):Array.from({ length: 100 }).map((_, index) => (
                 <li key={index}>
