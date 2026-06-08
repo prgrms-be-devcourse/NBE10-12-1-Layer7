@@ -14,3 +14,8 @@ export type Receipts = {
         }
     ] | [];
 }
+export type ReceiptListItem = {
+    productId: number,
+    quantity: number,
+    price: number
+}
