@@ -75,6 +75,11 @@ public class ApiV1ReceiptController {
             @PathVariable("id") Long id
     ) {
         Receipt receipt = receiptService.findById(id);
+
+        if (receipt.getMember().getId() != actorId.longValue()) {
+            return new RsData<>("403-1", "본인의 주문만 취소할 수 있습니다.", null);
+        }
+
         receiptService.cancel(receipt);
         return new RsData<>("200-1", "주문이 취소되었습니다.", null);
     }

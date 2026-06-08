@@ -34,7 +34,7 @@ public class ReceiptService {
         int price = product.getPrice();
 
         Receipt receipt = receiptRepository
-                .findByMemberAndDeliveryDate(member, deliveryDate)
+                .findByMemberAndDeliveryDateAndStatus(member, deliveryDate, "PENDING")
                 .orElseGet(() -> receiptRepository.save(new Receipt(member, deliveryDate)));
 
         receiptItemRepository.findByReceiptAndProductId(receipt, productId)
