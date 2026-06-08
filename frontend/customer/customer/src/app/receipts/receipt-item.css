@@ -4,7 +4,7 @@
   }
 
   .receipt-item-id {
-    @apply whitespace-nowrap text-lg font-bold text-coffee-primary;
+    @apply whitespace-nowrap text-base font-bold text-coffee-primary;
   }
 
   .receipt-item-created {
