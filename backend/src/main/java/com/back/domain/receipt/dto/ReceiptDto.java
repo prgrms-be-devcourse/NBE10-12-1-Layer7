@@ -8,6 +8,8 @@ public record ReceiptDto(
         String email,
         String address,
         String postalCode,
+        String deliveryDate,
+        String status,
         int totalPrice,
         List<ReceiptItemDto> items
 ) {
@@ -17,6 +19,8 @@ public record ReceiptDto(
                 receipt.getMember().getEmail(),
                 receipt.getMember().getAddress(),
                 receipt.getMember().getPostalCode(),
+                receipt.getDeliveryDate().toString(),
+                receipt.getStatus(),
                 receipt.getTotalPrice(),
                 receipt.getReceiptItems()
                         .stream()
