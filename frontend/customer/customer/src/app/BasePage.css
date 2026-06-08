@@ -1,20 +1,29 @@
-@layer components{
-    .base-page{
-        @apply bg-coffee-bg flex flex-col h-screen;
-    }
-    .base-header{
-        @apply bg-coffee-nav text-coffee-nav-text;
-    }
-    .base-nav{
-        @apply flex items-center justify-between px-8 py-4;
-    }
-    .nav-service{
-        @apply flex items-center gap-6 text-coffee-nav-accent text-2xl;
-    }
-    .nav-right{
-        @apply flex gap-2 text-coffee-nav-text text-2xl font-semibold;
-    }
-    .base-main{
-        @apply bg-coffee-bg flex-1;
-    }
+@layer components {
+  .base-page {
+    @apply bg-coffee-bg flex flex-col h-screen;
+  }
+
+  .base-header {
+    @apply bg-coffee-nav text-coffee-nav-text;
+  }
+
+  .base-nav {
+    @apply grid grid-cols-[360px_1fr_360px] items-center px-10 py-3;
+  }
+
+  .base-logo-button {
+    @apply flex items-center justify-start cursor-pointer;
+  }
+
+  .nav-service {
+    @apply flex items-center justify-center gap-12 text-coffee-nav-accent text-2xl;
+  }
+
+  .nav-right {
+    @apply flex justify-end gap-2 text-coffee-nav-text text-2xl font-semibold;
+  }
+
+  .base-main {
+    @apply bg-coffee-bg flex-1;
+  }
 }
