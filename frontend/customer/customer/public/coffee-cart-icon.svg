@@ -1,0 +1,9 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coffee cart icon">
+  <circle cx="48" cy="48" r="44" fill="#FAF6F0"/>
+  <path d="M24 28H29.5C31 28 32.3 29.02 32.67 30.47L34.1 36.05M34.1 36.05H66.1C68.02 36.05 69.45 37.84 69.03 39.72L65.1 57.1C64.79 58.47 63.57 59.45 62.17 59.45H39.8C38.41 59.45 37.2 58.49 36.87 57.14L34.1 36.05Z" stroke="#2C1A0E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 46.3C45.28 41.9 51.42 40.67 56.05 43.63C52.76 48.05 46.62 49.27 42 46.3Z" fill="#C8894E"/>
+  <path d="M42.95 46.15C46.43 45.35 50.28 44.34 54.95 43.74" stroke="#8B5A2B" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="41.5" cy="69.5" r="4.5" fill="#2C1A0E"/>
+  <circle cx="61.5" cy="69.5" r="4.5" fill="#2C1A0E"/>
+  <path d="M36.5 59.5H65" stroke="#C8894E" stroke-width="4" stroke-linecap="round"/>
+</svg>
