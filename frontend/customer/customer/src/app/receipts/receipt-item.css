@@ -1,49 +1,25 @@
 @layer components {
   .receipt-item {
     @apply grid grid-cols-[auto_auto_minmax(0,1fr)_auto_auto] items-center gap-4 rounded-lg border border-coffee-border bg-coffee-card px-5 py-5 text-coffee-primary shadow-sm transition hover:border-coffee-nav-accent hover:shadow-md;
-    }
+  }
 
   .receipt-item-id {
-    @apply whitespace-nowrap text-sm font-bold text-coffee-primary;
+    @apply whitespace-nowrap text-lg font-bold text-coffee-primary;
   }
 
   .receipt-item-created {
-    @apply whitespace-nowrap text-sm text-coffee-secondary;
+    @apply whitespace-nowrap text-base text-coffee-secondary;
   }
-
+  
   .receipt-item-name {
     @apply min-w-0 truncate text-base font-semibold text-coffee-primary;
   }
 
   .receipt-item-price {
-    @apply whitespace-nowrap text-right text-base font-bold text-coffee-nav-accent;
-  }
-@layer components {
-  .receipt-item {
-    @apply grid grid-cols-[160px_180px_minmax(0,1fr)_150px_130px] items-center gap-5 rounded-lg border border-coffee-border bg-coffee-card px-8 py-6 text-coffee-primary shadow-sm transition hover:border-coffee-nav-accent hover:shadow-md;
-  }
-
-  .receipt-item-id {
-    @apply whitespace-nowrap text-xl font-bold text-coffee-primary;
-  }
-
-  .receipt-item-created {
-    @apply whitespace-nowrap text-lg font-medium text-coffee-secondary;
-  }
-
-  .receipt-item-name {
-    @apply min-w-0 truncate text-lg font-semibold text-coffee-primary;
-  }
-
-  .receipt-item-price {
-    @apply whitespace-nowrap text-right text-2xl font-bold text-coffee-nav-accent;
+    @apply whitespace-nowrap text-right text-lg font-bold text-coffee-nav-accent;
   }
 
   .receipt-item-status {
-    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-5 py-3 text-lg font-bold text-coffee-accent;
-  }
-}
-  .receipt-item-status {
-    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-3 py-1.5 text-sm font-semibold text-coffee-accent;
+    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-4 py-2 text-base font-bold text-coffee-accent;
   }
 }
