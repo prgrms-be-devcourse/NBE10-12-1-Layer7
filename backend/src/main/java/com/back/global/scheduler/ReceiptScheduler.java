@@ -12,7 +12,7 @@ public class ReceiptScheduler {
     private final ReceiptService receiptService;
 
     // 매일 오후 2시에 PENDING → PROCESSING 자동 변경
-    @Scheduled(cron = "0 0 14 * * *")
+    @Scheduled(cron = "0 0 14 * * *", zone = "Asia/Seoul")
     public void processReceipts() {
         receiptService.processPendingReceipts();
     }
