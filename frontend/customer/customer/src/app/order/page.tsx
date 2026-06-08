@@ -1,11 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
 import { apiFetch } from "@/lib/backend/client";
+import { Member } from "@/type/members";
 import { CartItem } from "./cart-item";
 import { OrderItem } from "./order-item";
-import { useEffect, useState } from "react";
-import { Member } from "@/type/members";
 
 type OrderPageProps = {
     items?: CartItem[];
