@@ -6,7 +6,7 @@ import BasePage from "../BasePage";
 import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
 import { Member } from "@/type/members";
-import { Receipts } from "@/type/receiotId";
+import { Receipts } from "@/type/receipts";
 
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
