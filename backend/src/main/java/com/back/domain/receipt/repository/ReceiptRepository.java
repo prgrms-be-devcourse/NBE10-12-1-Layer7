@@ -15,4 +15,8 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 
     // 회원의 전체 주문 조회
     List<Receipt> findByMember(Member member);
+
+    // 오늘 미처리 주문 조회
+    Optional<Receipt> findByMemberAndDeliveryDateAndStatus(
+            Member member, LocalDate deliveryDate, String status);
 }
