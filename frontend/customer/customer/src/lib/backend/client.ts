@@ -11,3 +11,16 @@ export const apiFetch = (url: string, options?:RequestInit) => {
     return fetch(`${NEXT_PUBLIC_API_BASE_URL}${url}`,options)
     .then((res) => res.json());
 }
+
+
+export async function isLogin(): Promise<boolean>{
+    return apiFetch(`/api/v1/members/my`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+    }).then((data) => {
+        if (data.resultCode === "200-1") return true;
+        else return false;
+    });}
