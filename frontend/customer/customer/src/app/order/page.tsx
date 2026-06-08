@@ -1,6 +1,8 @@
+import { apiFetch, isLogin } from "@/lib/backend/client";
 import { CartItem } from "./cart-item";
 import { OrderItem } from "./order-item";
 import { useEffect, useState } from "react";
+import { Member } from "@/type/members";
 type OrderPageProps = {
   items: CartItem[];
   onIncrease: (productId: number) => void;
@@ -14,6 +16,22 @@ export default function OrderPage({
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+  const [member, setMember] = useState<Member>();
+  useEffect(() => {
+        apiFetch(`/api/v1/members/my`,{ 
+            method: "GET",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },})
+            .then((data) => {
+            const actorId = data.data;
+            return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
+            })
+            .then((res)=>{setMember(res.data);});
+  }, []);
+  
+
   return (
     <section className="order-page">
       <div className="order-block">

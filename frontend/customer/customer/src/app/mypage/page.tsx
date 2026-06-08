@@ -1,9 +1,33 @@
+'use client';
+import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
+import { Member } from "@/type/members";
+import { apiFetch, isLogin } from "@/lib/backend/client";
+import { useRouter } from "next/navigation";
 
 export default function MyPage() {
+    const [member, setMember] = useState<Member>();
+    const router = useRouter();
+
+
+    useEffect(() => {
+        apiFetch(`/api/v1/members/my`,{ 
+            method: "GET",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },})
+            .then((data) => {
+            const actorId = data.data;
+            return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
+            })
+            .then((res)=>{setMember(res.data);});
+}, []);
+
+
     return (
         <BasePage>
-            <main className="flex min-h-screen justify-center bg-lime-400 px-6 py-16">
+            <main className="flex min-h-screen justify-center px-6 py-16">
                 <section className="w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl">
                     <h1 className="mb-10 text-center text-5xl font-bold text-neutral-900">
                         MyPage
@@ -16,7 +40,7 @@ export default function MyPage() {
                             </p>
 
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                로그인한 사용자의 이메일
+                                {member?.email}
                             </div>
                         </div>
 
@@ -26,7 +50,7 @@ export default function MyPage() {
                             </p>
 
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                로그인한 사용자의 주소
+                                {member?.address}
                             </div>
                         </div>
 
@@ -36,7 +60,7 @@ export default function MyPage() {
                             </p>
 
                             <div className="rounded-2xl border border-neutral-300 p-5 text-neutral-400">
-                                로그인한 사용자의 우편번호
+                                {member?.postalCode}
                             </div>
                         </div>
 

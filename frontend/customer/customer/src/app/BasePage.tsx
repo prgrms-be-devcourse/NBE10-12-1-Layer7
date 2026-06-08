@@ -3,14 +3,31 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { apiFetch, isLogin } from "@/lib/backend/client";
 
 export default function BasePage({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const isLogin = false;
+  const [login, setLogin] = useState(false);
   const router = useRouter();
+
+  async function handleLogout() {
+  try {
+      await await fetch("http://localhost:8080/api/v1/members/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+  } finally {
+    setLogin(false);
+    router.replace("/");
+  }
+  }
+  useEffect(() =>{
+    isLogin().then(setLogin);
+  })
 
   return (
     <div className="base-page">
@@ -34,7 +51,7 @@ export default function BasePage({
 
           <nav className="nav-service">
             <Link href="/products">상품 목록</Link>
-            {isLogin && ( 
+            {login && ( 
               <>
                 <Link href="/mypage">마이페이지</Link>
                 <Link href="/orders">주문 내역</Link>
@@ -43,8 +60,8 @@ export default function BasePage({
           </nav>
 
           <div className="nav-right">
-            {isLogin ? (
-              <button type="button">로그아웃</button>
+            {login ? (
+              <button onClick={handleLogout} type="button">로그아웃</button>
             ) : (
               <>
                 <Link href="/login">로그인</Link>
