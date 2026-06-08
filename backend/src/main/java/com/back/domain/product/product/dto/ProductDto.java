@@ -13,7 +13,7 @@ public record ProductDto(
       String beanName,
       int price,
       ProductCategory category,
-      ImageDto image
+      String imageUrl
 ) {
 
     public ProductDto(Product product) {
@@ -25,7 +25,7 @@ public record ProductDto(
                 product.getPrice(),
                 product.getCategory(),
                 product.getImage() != null
-                        ? new ImageDto(product.getImage())
+                        ? product.getImage().getUrl()
                         : null
         );
     }
