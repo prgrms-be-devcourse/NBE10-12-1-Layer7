@@ -79,11 +79,9 @@ export default function MyPage() {
                         {/* 주문 내역 */}
                         <div className="pt-6">
                             <p className="mb-3 text-2xl font-semibold text-coffee-nav-accent">
-                                주문 내역
+                                주문 내역 ({receipts?.length ?? "주문 내역 정보를 불러오는 중입니다."})
                             </p>
-
                             <div className="min-h-[200px] rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-6 text-neutral-400">
-                                {receipts?.length ?? "주문 내역 정보를 불러오는 중입니다."}
                                 {receipts && receipts.length > 0 && (
                                     <ReceiptList receipts={receipts} />
                                    )}

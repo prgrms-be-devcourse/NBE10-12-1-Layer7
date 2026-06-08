@@ -4,6 +4,8 @@
 @import './products/product-page.css';
 @import './order/order-item.css';
 @import './order/order-page.css';
+@import './receipts/receipt-item.css';
+@import './receipts/receipt-list.css';
 
 @theme {
   /* 네비게이션 배경색 → bg-coffee-nav */
