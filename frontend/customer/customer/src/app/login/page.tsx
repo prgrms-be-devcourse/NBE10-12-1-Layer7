@@ -26,6 +26,7 @@ export default function LoginPage() {
             }
             apiFetch(`/api/v1/members/login`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                 },
@@ -36,7 +37,9 @@ export default function LoginPage() {
             })
             .then((data) => {
                 alert(data.msg ?? "로그인되었습니다.");
-                router.replace(`/`);
+                if(data.resultCode==="200-1"){
+                    router.replace(`/`);
+                }
             })
             .catch((error) => {
                 alert(error.message ?? "로그인에 실패했습니다.");
