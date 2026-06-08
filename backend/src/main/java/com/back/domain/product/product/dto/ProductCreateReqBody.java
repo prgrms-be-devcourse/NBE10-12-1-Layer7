@@ -8,4 +8,4 @@ public record ProductCreateReqBody(
         @NotBlank String beanName,
         int price,
         @NotNull ProductCategory category,
-        Long imageId) {}
+        String imageUrl) {}

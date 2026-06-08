@@ -1,6 +1,5 @@
 package com.back.domain.product.product.dto;
 
-import com.back.domain.product.image.dto.ImageDto;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.entity.ProductCategory;
 
@@ -24,9 +23,7 @@ public record ProductDto(
                 product.getBeanName(),
                 product.getPrice(),
                 product.getCategory(),
-                product.getImage() != null
-                        ? product.getImage().getUrl()
-                        : null
+                product.getImageUrl()
         );
     }
 }

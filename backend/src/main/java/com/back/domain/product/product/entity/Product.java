@@ -1,7 +1,5 @@
 package com.back.domain.product.product.entity;
 
-import com.back.domain.product.image.entity.Image;
-import com.back.domain.product.product.entity.ProductCategory;
 import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,27 +16,25 @@ public class Product extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ProductCategory category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "image_id")
-    private Image image;
+    private String imageUrl;
 
-    public Product(String beanName, int price, ProductCategory category, Image image) {
+    public Product(String beanName, int price, ProductCategory category,String imageUrl) {
         this.beanName = beanName;
         this.price = price;
         this.category = category;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
     public void modify(
             String beanName,
             int price,
             ProductCategory category,
-            Image image
+            String imageUrl
     ) {
         this.beanName = beanName;
         this.price = price;
         this.category = category;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
 }

@@ -30,7 +30,7 @@ public class ApiV1AdminProductController {
                 reqBody.beanName(),
                 reqBody.price(),
                 reqBody.category(),
-                reqBody.imageId()
+                reqBody.imageUrl()
         );
 
         return new RsData<>(
@@ -54,7 +54,7 @@ public class ApiV1AdminProductController {
                 reqBody.beanName(),
                 reqBody.price(),
                 reqBody.category(),
-                reqBody.imageId()
+                reqBody.imageUrl()
         );
 
         return new RsData<>(
