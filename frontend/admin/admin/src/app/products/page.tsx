@@ -9,6 +9,7 @@ import { apiFetch, getUrl } from "@/lib/backend/client";
 import { Product, ProductDto, toProduct } from "@/type/products";
 import { CartItem } from "../order/cart-item";
 import ProductDetail from "./product-detail";
+import { getDefaultImage } from "@/lib/util";
 
 // products.tsx
 export default function Page() {
@@ -26,6 +27,7 @@ export default function Page() {
   }
 
   const [isOpen, setIsOpen] = useState(false)
+  const [isFormOpen, setIsFormOpen] = useState(false)
   return (
     <BasePage>
       <div className="products-page">
@@ -34,7 +36,7 @@ export default function Page() {
             <ul className="product-list">
               {products ? products.map((product) => (
                 <li key={product.id}>
-                  <ProductCard name={product.beanName} imageUrl={getUrl(product.image?.url??"")} onClick={() => {setDetail(product)}} {...product} />
+                  <ProductCard name={product.beanName} onClick={() => {setDetail(product)}} {...product} />
                 </li>
               )):Array.from({ length: 100 }).map((_, index) => (
                 <li key={index}>
@@ -50,12 +52,13 @@ export default function Page() {
             </ul>
         </div>
       </div>
+      <CartFAB label="상품 추가 페이지 열기" icon={null} disabled={false} onClick={()=>(setIsFormOpen(true))}></CartFAB>
       {isOpen && item && (
         <div className="fixed inset-0 z-50 grid place-items-center p-6">
           <button
             type="button"
             className="absolute inset-0 bg-coffee-nav/60"
-            aria-label="상품 수정 닫기"
+            aria-label="상품 수정 페이지 닫기"
             onClick={() => setIsOpen(false)}
           />
 
@@ -64,6 +67,27 @@ export default function Page() {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
+              className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full text-xl font-bold text-coffee-secondary hover:bg-coffee-border"
+              aria-label="닫기"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+      {isFormOpen && item && (
+        <div className="fixed inset-0 z-50 grid place-items-center p-6">
+          <button
+            type="button"
+            className="absolute inset-0 bg-coffee-nav/60"
+            aria-label="상품 추가 페이지 닫기"
+            onClick={() => setIsFormOpen(false)}
+          />
+
+          <div className="relative z-10">
+            <button
+              type="button"
+              onClick={() => setIsFormOpen(false)}
               className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full text-xl font-bold text-coffee-secondary hover:bg-coffee-border"
               aria-label="닫기"
             >

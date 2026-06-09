@@ -8,7 +8,7 @@ export type ProductDto = {
     price : number
     category : string
     imageId?: number
-    imageUrl?: string
+    imageUrl: string | '../default-coffee-product.svg'
     image: {
     id: number;
     url: string;
