@@ -1,5 +1,6 @@
 "use client";
 
+import "./order-page.css";
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/backend/client";
 import { Member } from "@/type/members";
