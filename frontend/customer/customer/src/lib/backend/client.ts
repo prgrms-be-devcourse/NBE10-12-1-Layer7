@@ -24,3 +24,6 @@ export async function isLogin(): Promise<boolean>{
         if (data.resultCode === "200-1") return true;
         else return false;
     });}
+export function getUrl(indetifier:string){
+    return `${NEXT_PUBLIC_API_BASE_URL}/images${indetifier}`;
+}

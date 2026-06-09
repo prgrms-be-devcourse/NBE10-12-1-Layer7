@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { getUrl } from "@/lib/backend/client";
+
 interface ProductCardProps{
     id?: number;
     name?: string;
@@ -13,10 +14,9 @@ export function ProductCard({name="none", price=0, category="미분류", imageUr
         <div className="product-card" onClick={onClick}>
             <div className="product-card-category">{category}</div>
             <div className="product-card-img">
-                <Image
-                    src={imageUrl || "/default-coffee-product.svg"}
+                <img
+                    src={getUrl(imageUrl) || "/default-coffee-product.svg"}
                     alt={name}
-                    fill
                     className="object-cover"
                 />
                 </div>

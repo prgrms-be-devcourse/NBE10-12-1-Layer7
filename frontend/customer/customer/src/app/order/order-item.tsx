@@ -1,19 +1,18 @@
-import Image from "next/image";
 import { CartItem } from "./cart-item";
+import { getUrl } from "@/lib/backend/client";
 type OrderItemProps = {
   item: CartItem;
   onIncrease: () => void;
   onDecrease: () => void;
 };
 export function OrderItem({ item, onIncrease, onDecrease }: OrderItemProps) {
-
+  const url = item.product.imageUrl || "/default-coffee-product.svg";
   return (
     <div className="order-item">
       <div className="order-item-img">
-        <Image
-            src={item.product.imageUrl || "/default-coffee-product.svg"}
-            alt={item.product.name || "기본 원두 상품 이미지"}
-            fill
+        <img
+            src={url === "/default-coffee-product.svg" ? "/default-coffee-product.svg":getUrl(url)}
+            alt={item.product.imageUrl || "기본 원두 상품 이미지"}
             sizes="80px"
             className="object-cover"
         />
