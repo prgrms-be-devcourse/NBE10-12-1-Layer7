@@ -18,7 +18,7 @@ export function CartFAB({badge=0, badgeMax = 99, label="장바구니 열기", ic
     return (
        <button className="fab-button" onClick={onClick} disabled={disabled} aria-label={label}>
             <span className="fab-icon">
-                {icon || <span className="fab-text">🛒</span>}
+                {icon || <span className="fab-text">+</span>}
             </span>
 
             {displayBadge && (
