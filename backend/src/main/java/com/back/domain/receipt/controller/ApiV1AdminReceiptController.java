@@ -1,10 +1,11 @@
 package com.back.domain.receipt.controller;
 
 import com.back.domain.receipt.entity.Receipt;
+import com.back.domain.receipt.entity.ReceiptStatus;
 import com.back.domain.receipt.service.ReceiptService;
 import com.back.global.rsData.RsData;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class ApiV1AdminReceiptController {
     private final ReceiptService receiptService;
 
     record UpdateStatusReqBody(
-            @NotBlank String status
+            @NotNull ReceiptStatus status
     ) {}
 
     // 전체 주문 조회

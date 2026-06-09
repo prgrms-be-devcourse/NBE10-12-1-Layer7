@@ -3,6 +3,7 @@ package com.back.domain.receipt.controller;
 import com.back.domain.member.entity.Member;
 import com.back.domain.member.service.MemberService;
 import com.back.domain.receipt.entity.Receipt;
+import com.back.domain.receipt.entity.ReceiptStatus;
 import com.back.domain.receipt.service.ReceiptService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -203,7 +204,7 @@ class ApiV1ReceiptControllerTest {
         given(receipt.getId()).willReturn(1L);
         given(receipt.getMember()).willReturn(member);
         given(receipt.getDeliveryDate()).willReturn(LocalDate.now());
-        given(receipt.getStatus()).willReturn("PENDING");
+        given(receipt.getStatus()).willReturn(ReceiptStatus.PENDING);
         given(receipt.getTotalPrice()).willReturn(20000);
         given(receipt.getReceiptItems()).willReturn(List.of());
 

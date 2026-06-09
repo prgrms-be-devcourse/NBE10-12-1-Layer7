@@ -26,8 +26,9 @@ public class Receipt extends BaseEntity {
     @Column(nullable = false)
     private LocalDate deliveryDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status; // PENDING, PROCESSING, DELIVERED, CANCELLED
+    private ReceiptStatus status; // PENDING, PROCESSING, DELIVERED, CANCELLED
 
     @Column(nullable = false)
     private int totalPrice;
@@ -38,7 +39,7 @@ public class Receipt extends BaseEntity {
     public Receipt(Member member, LocalDate deliveryDate) {
         this.member = member;
         this.deliveryDate = deliveryDate;
-        this.status = "PENDING";
+        this.status = ReceiptStatus.PENDING;
         this.totalPrice = 0;
     }
 
@@ -55,7 +56,7 @@ public class Receipt extends BaseEntity {
         this.totalPrice = totalPrice;
     }
 
-    public void updateStatus(String status) {
+    public void updateStatus(ReceiptStatus status) {
         this.status = status;
     }
 }

@@ -5,6 +5,7 @@ import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.service.ProductService;
 import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.receipt.entity.ReceiptItem;
+import com.back.domain.receipt.entity.ReceiptStatus;
 import com.back.domain.receipt.repository.ReceiptItemRepository;
 import com.back.domain.receipt.repository.ReceiptRepository;
 import com.back.global.globalExceptionHandler.ReceiptNotFoundException;
@@ -33,7 +34,7 @@ public class ReceiptService {
         int price = product.getPrice();
 
         Receipt receipt = receiptRepository
-                .findByMemberAndDeliveryDateAndStatus(member, deliveryDate, "PENDING")  // ← PENDING 체크 추가
+                .findByMemberAndDeliveryDateAndStatus(member, deliveryDate, ReceiptStatus.PENDING)  // ← PENDING 체크 추가
                 .orElseGet(() -> receiptRepository.save(new Receipt(member, deliveryDate)));
 
         receiptItemRepository.findByReceiptAndProduct(receipt, product)  // ← product로 변경
@@ -71,12 +72,12 @@ public class ReceiptService {
         receiptItemRepository.findByReceipt(receipt)
                 .forEach(item -> item.updateQuantity(0));
         receipt.updateTotalPrice(0);
-        receipt.updateStatus("CANCELLED");
+        receipt.updateStatus(ReceiptStatus.CANCELLED);
     }
 
     // 주문 상태 변경 (관리자)
     @Transactional
-    public void updateStatus(Receipt receipt, String status) {
+    public void updateStatus(Receipt receipt, ReceiptStatus status) {
         receipt.updateStatus(status);
     }
 
@@ -97,14 +98,14 @@ public class ReceiptService {
     public Optional<Receipt> findTodayPendingReceipt(Member member) {
         LocalDate deliveryDate = Receipt.calcDeliveryDate();
         return receiptRepository.findByMemberAndDeliveryDateAndStatus(
-                member, deliveryDate, "PENDING");
+                member, deliveryDate, ReceiptStatus.PENDING);
     }
 
     // 오후 2시 배치 처리
     @Transactional
     public void processPendingReceipts() {
         LocalDate today = LocalDate.now();
-        receiptRepository.findByDeliveryDateAndStatus(today, "PENDING")
-                .forEach(receipt -> receipt.updateStatus("PROCESSING"));
+        receiptRepository.findByDeliveryDateAndStatus(today, ReceiptStatus.PENDING)
+                .forEach(receipt -> receipt.updateStatus(ReceiptStatus.PROCESSING));
     }
 }

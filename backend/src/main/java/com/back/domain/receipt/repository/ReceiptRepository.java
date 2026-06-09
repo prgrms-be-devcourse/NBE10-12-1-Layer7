@@ -2,6 +2,7 @@ package com.back.domain.receipt.repository;
 
 import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.member.entity.Member;
+import com.back.domain.receipt.entity.ReceiptStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
@@ -18,8 +19,8 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 
     // 오늘 미처리 주문 조회
     Optional<Receipt> findByMemberAndDeliveryDateAndStatus(
-            Member member, LocalDate deliveryDate, String status);
+            Member member, LocalDate deliveryDate, ReceiptStatus status);
 
     // 배치 처리용 - 특정 날짜 PENDING 주문 조회
-    List<Receipt> findByDeliveryDateAndStatus(LocalDate deliveryDate, String status);
+    List<Receipt> findByDeliveryDateAndStatus(LocalDate deliveryDate, ReceiptStatus status);
 }

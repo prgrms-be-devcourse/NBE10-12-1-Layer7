@@ -8,6 +8,7 @@ import com.back.domain.receipt.service.ReceiptService;
 import com.back.global.rsData.RsData;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class ApiV1ReceiptController {
 
     record AddItemReqBody(
             @NotNull Long productId,
-            @NotNull Integer quantity
+            @NotNull @Positive Integer quantity
             // price 제거 ← 백엔드에서 조회
     ) {}
 
@@ -64,6 +65,11 @@ public class ApiV1ReceiptController {
             @PathVariable("id") Long id
     ) {
         Receipt receipt = receiptService.findById(id);
+
+        if (receipt.getMember().getId() != actorId.longValue()) {
+            return new RsData<>("403-1", "본인의 주문만 조회할 수 있습니다.", null);
+        }
+
         return new RsData<>("200-1", "주문 조회 성공", new ReceiptDto(receipt));
     }
 

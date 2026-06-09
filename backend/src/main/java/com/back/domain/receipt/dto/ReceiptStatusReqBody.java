@@ -1,7 +1,8 @@
 package com.back.domain.receipt.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import com.back.domain.receipt.entity.ReceiptStatus;
+import jakarta.validation.constraints.NotNull;
 
 public record ReceiptStatusReqBody(
-        @NotBlank String status
+        @NotNull ReceiptStatus status
 ) {}

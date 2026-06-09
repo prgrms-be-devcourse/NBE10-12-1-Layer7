@@ -9,6 +9,7 @@ import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.repository.ProductRepository;
 import com.back.domain.receipt.entity.Receipt;
 import com.back.domain.receipt.entity.ReceiptItem;
+import com.back.domain.receipt.entity.ReceiptStatus;
 import com.back.domain.receipt.repository.ReceiptItemRepository;
 import com.back.domain.receipt.repository.ReceiptRepository;
 import jakarta.annotation.PostConstruct;
@@ -45,22 +46,22 @@ public class BaseInitData {
 
         // user1 주문
         Member member1 = memberService.findByEmail("user1@test.com");
-        createReceipt(member1, ethiopia, 1, LocalDate.now().minusDays(7), "DELIVERED");
-        createReceipt(member1, brazil,   2, LocalDate.now().minusDays(5), "DELIVERED");
-        createReceipt(member1, ethiopia, 1, LocalDate.now().minusDays(3), "DELIVERED");
-        createReceipt(member1, brazil,   2, LocalDate.now().minusDays(1), "PROCESSING");
-        createReceipt(member1, ethiopia, 2, LocalDate.now(),              "PENDING");
+        createReceipt(member1, ethiopia, 1, LocalDate.now().minusDays(7), ReceiptStatus.DELIVERED);
+        createReceipt(member1, brazil,   2, LocalDate.now().minusDays(5), ReceiptStatus.DELIVERED);
+        createReceipt(member1, ethiopia, 1, LocalDate.now().minusDays(3), ReceiptStatus.DELIVERED);
+        createReceipt(member1, brazil,   2, LocalDate.now().minusDays(1), ReceiptStatus.PROCESSING);
+        createReceipt(member1, ethiopia, 2, LocalDate.now(),              ReceiptStatus.PENDING);
 
         // user2 주문
         Member member2 = memberService.findByEmail("user2@test.com");
-        createReceipt(member2, brazil,   1, LocalDate.now().minusDays(6), "DELIVERED");
-        createReceipt(member2, ethiopia, 2, LocalDate.now().minusDays(4), "DELIVERED");
-        createReceipt(member2, brazil,   1, LocalDate.now().minusDays(2), "DELIVERED");
-        createReceipt(member2, ethiopia, 3, LocalDate.now().minusDays(1), "PROCESSING");
-        createReceipt(member2, brazil,   2, LocalDate.now(),              "PENDING");
+        createReceipt(member2, brazil,   1, LocalDate.now().minusDays(6), ReceiptStatus.DELIVERED);
+        createReceipt(member2, ethiopia, 2, LocalDate.now().minusDays(4), ReceiptStatus.DELIVERED);
+        createReceipt(member2, brazil,   1, LocalDate.now().minusDays(2), ReceiptStatus.DELIVERED);
+        createReceipt(member2, ethiopia, 3, LocalDate.now().minusDays(1), ReceiptStatus.PROCESSING);
+        createReceipt(member2, brazil,   2, LocalDate.now(),              ReceiptStatus.PENDING);
     }
 
-    private void createReceipt(Member member, Product product, int quantity, LocalDate deliveryDate, String status) {
+    private void createReceipt(Member member, Product product, int quantity, LocalDate deliveryDate, ReceiptStatus status) {
         Receipt receipt = receiptRepository.save(new Receipt(member, deliveryDate));
         receipt.updateStatus(status);
         receipt.updateTotalPrice(product.getPrice() * quantity);
