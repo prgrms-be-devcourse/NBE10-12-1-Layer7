@@ -54,7 +54,7 @@ export default function BasePage({
             {login && ( 
               <>
                 <Link href="/mypage">마이페이지</Link>
-                <Link href="/orders">주문 내역</Link>
+                <Link href="/myorder">주문 내역</Link>
               </>
             )}
           </nav>
