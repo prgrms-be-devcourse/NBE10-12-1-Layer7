@@ -27,8 +27,8 @@ public class BaseInitData {
     private void initProducts() {
         if (productRepository.count() > 0) return;
 
-        Image img1 = imageRepository.save(new Image("https://coffee1.jpg"));
-        Image img2 = imageRepository.save(new Image("https://coffee2.jpg"));
+        Image img1 = imageRepository.save(new Image("/coffee-beans-brazil.png"));
+        Image img2 = imageRepository.save(new Image("/coffee-beans-ethiopia.png"));
 
         productRepository.save(new Product(
                 "에티오피아",
