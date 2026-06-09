@@ -64,6 +64,7 @@ public class BaseInitData {
         Receipt receipt = receiptRepository.save(new Receipt(member, deliveryDate));
         receipt.updateStatus(status);
         receipt.updateTotalPrice(product.getPrice() * quantity);
+        receiptRepository.save(receipt);  // ← 상태/금액 DB 반영
         receiptItemRepository.save(new ReceiptItem(receipt, product, quantity, product.getPrice()));
     }
 }
