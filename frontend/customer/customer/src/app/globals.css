@@ -6,6 +6,8 @@
 @import './order/order-page.css';
 @import './receipts/receipt-item.css';
 @import './receipts/receipt-list.css';
+@import './myorder/myorder.css';
+
 
 @theme {
   /* 네비게이션 배경색 → bg-coffee-nav */
