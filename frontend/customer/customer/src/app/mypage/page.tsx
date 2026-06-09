@@ -7,20 +7,6 @@ import { apiFetch, isLogin } from "@/lib/backend/client";
 import { useRouter } from "next/navigation";
 import { Member } from "@/type/members";
 
-type Member = {
-    id: number;
-    email: string;
-    address: string;
-    postalCode: string;
-};
-
-type Member = {
-    id: number;
-    email: string;
-    address: string;
-    postalCode: string;
-};
-
 export default function MyPage() {
     const [member, setMember] = useState<Member>();
     const router = useRouter();
