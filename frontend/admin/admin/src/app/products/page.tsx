@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
 import { CartFAB } from "./cart-fab";
 import { ProductCard } from "./product-card";
-import Image from 'next/image';
-import OrderPage from '../order/page';
 import { apiFetch, getUrl } from "@/lib/backend/client";
-import { Product, ProductDto, toProduct } from "@/type/products";
-import { CartItem } from "../order/cart-item";
+import { DEFAULT_PRODUCT_DTO, Product, ProductDto, toProduct } from "@/type/products";
 import ProductDetail from "./product-detail";
-import { getDefaultImage } from "@/lib/util";
+
+
 
 // products.tsx
 export default function Page() {
@@ -19,12 +17,13 @@ export default function Page() {
       .then(setProducts);
   }, []);
   const [item, setItem] = useState<ProductDto>();
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
+  
+  
   const setDetail = (dto: ProductDto) =>{
     setItem(dto);
     setIsOpen(true);
   }
+  
 
   const [isOpen, setIsOpen] = useState(false)
   const [isFormOpen, setIsFormOpen] = useState(false)
@@ -63,7 +62,7 @@ export default function Page() {
           />
 
           <div className="relative z-10">
-            <ProductDetail product={item}/>
+            <ProductDetail product={item} canClick={false} modalOff={()=>setIsOpen(false)}/>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -75,7 +74,7 @@ export default function Page() {
           </div>
         </div>
       )}
-      {isFormOpen && item && (
+      {isFormOpen && (
         <div className="fixed inset-0 z-50 grid place-items-center p-6">
           <button
             type="button"
@@ -83,8 +82,8 @@ export default function Page() {
             aria-label="상품 추가 페이지 닫기"
             onClick={() => setIsFormOpen(false)}
           />
-
           <div className="relative z-10">
+            <ProductDetail product={DEFAULT_PRODUCT_DTO} canClick={true} modalOff={()=>setIsFormOpen(false)} ></ProductDetail>
             <button
               type="button"
               onClick={() => setIsFormOpen(false)}
