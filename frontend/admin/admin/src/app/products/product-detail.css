@@ -1,0 +1,93 @@
+@layer components {
+  .product-detail-block {
+    @apply grid max-w-2xl grid-cols-[180px_minmax(0,1fr)] gap-5 rounded-lg border border-coffee-border bg-coffee-card p-5 text-coffee-primary shadow-sm;
+  }
+
+  .product-detail-img {
+    @apply h-[180px] w-full rounded-md border border-coffee-border bg-coffee-bg object-cover;
+  }
+
+  .product-detail-info {
+    @apply flex min-w-0 flex-col gap-3;
+  }
+
+  .product-detail-id {
+    @apply w-fit rounded-md bg-coffee-bg px-2.5 py-1 text-xs font-semibold text-coffee-accent;
+  }
+
+  .product-detail-name {
+    @apply truncate text-2xl font-bold text-coffee-primary;
+  }
+
+  .product-detail-category {
+    @apply inline-flex w-fit rounded-md bg-coffee-bg px-2.5 py-1 text-xs font-bold text-coffee-accent;
+  }
+
+  .product-detail-price {
+    @apply text-xl font-bold text-coffee-nav-accent;
+  }
+
+  .product-detail-created,
+  .product-detail-modified {
+    @apply text-xs text-coffee-secondary;
+  }
+
+  .product-detail-label {
+    @apply text-xs font-semibold text-coffee-secondary;
+  }
+
+  .product-detail-name-input,
+  .product-detail-category-input,
+  .product-detail-price-input,
+  .product-detail-select {
+    @apply h-10 w-full rounded-md border border-coffee-border bg-white px-3 text-sm text-coffee-primary outline-none transition placeholder:text-coffee-secondary/50 focus:border-coffee-nav-accent focus:ring-2 focus:ring-coffee-nav-accent/25;
+  }
+
+  .product-detail-name-input {
+    @apply text-base font-semibold;
+  }
+
+  .product-detail-price-input {
+    @apply font-bold text-coffee-nav-accent;
+  }
+  .product-detail-price-input::-webkit-outer-spin-button,
+    .product-detail-price-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    .product-detail-price-input {
+    -moz-appearance: textfield;
+    }
+
+  .product-detail-select {
+    @apply cursor-pointer;
+  }
+
+  .product-detail-modify-button,
+  .product-detail-confirm-button {
+    @apply mt-2 h-10 rounded-md px-4 text-sm font-bold transition;
+  }
+
+  .product-detail-modify-button {
+    @apply border border-coffee-border bg-white text-coffee-secondary hover:border-coffee-nav-accent hover:text-coffee-primary;
+  }
+
+  .product-detail-confirm-button {
+    @apply bg-coffee-nav text-coffee-nav-text hover:bg-coffee-primary;
+  }
+
+  @media (max-width: 768px) {
+    .product-detail-block {
+      @apply max-w-full grid-cols-1 gap-4 p-4;
+    }
+
+    .product-detail-img {
+      @apply h-[160px];
+    }
+
+    .product-detail-name {
+      @apply text-xl;
+    }
+  }
+}

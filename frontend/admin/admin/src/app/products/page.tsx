@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react";
 import BasePage from "../BasePage";
 import { CartFAB } from "./cart-fab";
@@ -8,52 +8,23 @@ import OrderPage from '../order/page';
 import { apiFetch, getUrl } from "@/lib/backend/client";
 import { Product, ProductDto, toProduct } from "@/type/products";
 import { CartItem } from "../order/cart-item";
+import ProductDetail from "./product-detail";
 
 // products.tsx
 export default function Page() {
-  const increaseQuantity = (productId: number) => {
-  setCartItems((prev) =>
-    prev.map((item) =>
-      item.product.id === productId
-        ? { ...item, quantity: item.quantity + 1 }
-        : item
-    )
-  );
-};
-
-const decreaseQuantity = (productId: number) => {
-  setCartItems((prev) =>
-    prev
-      .map((item) =>
-        item.product.id === productId
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-      .filter((item) => item.quantity > 0)
-  );
-};
   const [products, setProducts] = useState<ProductDto[] | null>(null);
   useEffect(() => {
     apiFetch(`/api/v1/products`)
       .then(setProducts);
   }, []);
-  
+  const [item, setItem] = useState<ProductDto>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const addToCart = (product: Product) => {
-    setCartItems((prev) => {
-    const existing = prev.find((item) => item.product.id === product.id);
 
-    if (existing) {
-      return prev.map((item) =>
-        item.product.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-    }
-
-    return [...prev, { product, quantity: 1 }];
-  });
+  const setDetail = (dto: ProductDto) =>{
+    setItem(dto);
+    setIsOpen(true);
   }
+
   const [isOpen, setIsOpen] = useState(false)
   return (
     <BasePage>
@@ -63,7 +34,7 @@ const decreaseQuantity = (productId: number) => {
             <ul className="product-list">
               {products ? products.map((product) => (
                 <li key={product.id}>
-                  <ProductCard name={product.beanName} imageUrl={getUrl(product.image?.url??"")} onClick={() => addToCart(toProduct(product))} {...product} />
+                  <ProductCard name={product.beanName} imageUrl={getUrl(product.image?.url??"")} onClick={() => {setDetail(product)}} {...product} />
                 </li>
               )):Array.from({ length: 100 }).map((_, index) => (
                 <li key={index}>
@@ -78,21 +49,18 @@ const decreaseQuantity = (productId: number) => {
               ))}
             </ul>
         </div>
-            
       </div>
-      <CartFAB badge={cartItems.length} onClick={() => setIsOpen(true)} icon={<Image src="/coffee-cart-fab.svg" alt={""} width={80} height={80}/>}></CartFAB>
-      
-      {isOpen && (
+      {isOpen && item && (
         <div className="fixed inset-0 z-50 grid place-items-center p-6">
           <button
             type="button"
             className="absolute inset-0 bg-coffee-nav/60"
-            aria-label="장바구니 닫기"
+            aria-label="상품 수정 닫기"
             onClick={() => setIsOpen(false)}
           />
 
           <div className="relative z-10">
-            <OrderPage items={cartItems} onDecrease={decreaseQuantity} onIncrease={increaseQuantity}/>
+            <ProductDetail product={item}/>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
