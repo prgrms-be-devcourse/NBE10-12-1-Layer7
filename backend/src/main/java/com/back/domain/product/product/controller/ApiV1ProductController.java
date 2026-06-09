@@ -1,5 +1,6 @@
 package com.back.domain.product.product.controller;
 
+import com.back.domain.product.product.dto.ProductCountResponse;
 import com.back.domain.product.product.dto.ProductDto;
 import com.back.domain.product.product.entity.Product;
 import com.back.domain.product.product.service.ProductService;
@@ -37,9 +38,9 @@ public class ApiV1ProductController {
     }
 
     @GetMapping("/count")
-    public Map<String, Long> getProductCount() {
+    public ProductCountResponse getProductCount() {
         long count = productService.count();
-        return Map.of("count", count);
+        return new ProductCountResponse(count);
     }
 
 }
