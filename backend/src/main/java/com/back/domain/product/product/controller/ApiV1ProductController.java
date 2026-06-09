@@ -52,9 +52,5 @@ public class ApiV1ProductController {
                 .map(category -> new ProductCategoryResponse(category.name()))
                 .toList();
     }
-    @GetMapping("/test")
-    public String test() {
-        return "ok";
-    }
 
 }
