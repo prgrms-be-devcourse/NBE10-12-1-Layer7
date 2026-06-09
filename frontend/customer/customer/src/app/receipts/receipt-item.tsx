@@ -9,7 +9,7 @@ export function ReceiptItem({receipt}:ReceiptItemProps){
     function representativeProductName(items:ReceiptListItem[]){
         let repName = "";
         // if(items.length>0)repName+=items[0].productId.toString();
-        if(items.length>0)repName+= "상품 이름입니다.";
+        if(items.length>0)repName+= items[0].name;
         if(items.length>1)repName+=" 외 " + (items.length-1) + " 개";
         return repName;
     }

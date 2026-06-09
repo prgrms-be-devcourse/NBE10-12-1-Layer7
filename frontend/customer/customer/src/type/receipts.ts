@@ -9,12 +9,14 @@ export type Receipts = {
     items: [
         {
             productId: number,
+            name: string,
             quantity: number,
             price: number
         }
     ] | [];
 }
 export type ReceiptListItem = {
+    name: string
     productId: number,
     quantity: number,
     price: number
