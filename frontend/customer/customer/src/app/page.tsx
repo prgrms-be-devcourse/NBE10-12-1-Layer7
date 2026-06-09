@@ -1,7 +1,12 @@
+'use client';
+import { apiFetch } from "@/lib/backend/client";
 import BasePage from "./BasePage";
+import { useState } from "react";
 
 //main page.tsx
 export default function Page() {
+    const [productCount, setProductCount] = useState<number>(0);
+    apiFetch(`/api/v1/products/count`).then((data) => (setProductCount(data.count)));
     return (
         <BasePage>
             <div className="h-full flex items-center justify-center">
@@ -31,7 +36,7 @@ export default function Page() {
                         </p>
 
                         <p>
-                            현재 총 <strong>4개의 상품</strong>이 있습니다.
+                            현재 총 <strong>{productCount}개의 상품</strong>이 있습니다.
                         </p>
                     </div>
                 </section>
