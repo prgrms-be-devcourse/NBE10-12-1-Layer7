@@ -1,0 +1,16 @@
+<svg width="360" height="88" viewBox="0 0 360 88" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grids &amp; Circles">
+  <g transform="translate(20 15)">
+    <rect x="3" y="8" width="42" height="36" rx="8" stroke="#C8894E" stroke-width="3"/>
+    <path d="M8 17H2.5" stroke="#C8894E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M13 8V3.5" stroke="#C8894E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M35 8V3.5" stroke="#C8894E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M16 31C19.68 25.7 27.04 24.05 32.75 27.35C29.07 32.65 21.71 34.3 16 31Z" fill="#F5E6C8"/>
+    <path d="M17.7 30.75C21.55 29.75 25.85 28.6 31.25 27.48" stroke="#8B5A2B" stroke-width="2.1" stroke-linecap="round"/>
+    <path d="M14.5 44.5C15.88 44.5 17 43.38 17 42C17 40.62 15.88 39.5 14.5 39.5C13.12 39.5 12 40.62 12 42C12 43.38 13.12 44.5 14.5 44.5Z" fill="#F5E6C8"/>
+    <path d="M36.5 44.5C37.88 44.5 39 43.38 39 42C39 40.62 37.88 39.5 36.5 39.5C35.12 39.5 34 40.62 34 42C34 43.38 35.12 44.5 36.5 44.5Z" fill="#F5E6C8"/>
+    <path d="M16 44H36" stroke="#C8894E" stroke-width="2.8" stroke-linecap="round"/>
+  </g>
+  <text x="83" y="52" fill="#F5E6C8" font-family="Inter, Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="27" font-weight="800" letter-spacing="0">
+    Grids <tspan fill="#C8894E">&amp;</tspan> Circles
+  </text>
+</svg>

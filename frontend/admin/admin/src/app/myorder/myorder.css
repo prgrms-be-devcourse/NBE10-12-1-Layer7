@@ -1,0 +1,14 @@
+@layer components{
+    .myorder-page{
+        @apply flex min-h-screen justify-center px-6 py-16;
+    }
+    .myorder-owner{
+        @apply mb-3 text-2xl font-semibold text-coffee-nav-accent;
+    }
+    .myorder-block{
+        @apply w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl;
+    }
+    .myorder-list-block{
+        @apply min-h-[200px] rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-6 text-neutral-400;
+    }
+}

@@ -1,0 +1,24 @@
+@reference "../globals.css";
+
+@layer components {
+  .fab-button {
+    @apply fixed bottom-8 right-8 z-40 grid h-24 w-24 place-items-center rounded-full bg-coffee-nav text-coffee-nav-text shadow-[0_16px_34px_rgba(44,26,14,0.25)] ring-[5px] ring-white transition hover:-translate-y-0.5 hover:bg-coffee-primary disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .fab-icon {
+    @apply grid h-[60px] w-[60px] place-items-center;
+  }
+
+  .fab-icon img,
+  .fab-icon svg {
+    @apply h-full w-full object-contain;
+  }
+
+  .fab-text {
+    @apply text-4xl leading-none;
+  }
+
+  .fab-badge {
+    @apply absolute -right-1 -top-1 grid h-8 w-8 place-items-center rounded-full bg-coffee-nav-accent text-sm font-bold text-white;
+  }
+}

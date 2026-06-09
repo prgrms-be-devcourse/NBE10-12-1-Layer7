@@ -1,0 +1,16 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coffee cart floating action button">
+  <defs>
+    <filter id="fabShadow" x="5" y="7" width="62" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#2C1A0E" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <g filter="url(#fabShadow)">
+    <circle cx="36" cy="34" r="28" fill="#2C1A0E"/>
+    <circle cx="36" cy="34" r="24.5" stroke="#C8894E" stroke-width="2"/>
+    <path d="M19 23.5H23C24.13 23.5 25.11 24.27 25.39 25.37L26.43 29.45M26.43 29.45H48.68C50.09 29.45 51.14 30.76 50.83 32.14L48.11 44.18C47.88 45.19 46.99 45.9 45.96 45.9H30.43C29.41 45.9 28.51 45.2 28.27 44.21L26.43 29.45Z" stroke="#F5E6C8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.6 36.65C34.95 33.46 39.39 32.56 42.74 34.7C40.37 37.89 35.94 38.78 32.6 36.65Z" fill="#C8894E"/>
+    <path d="M33.35 36.53C35.76 35.95 38.53 35.25 41.92 34.8" stroke="#FAF6F0" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="32" cy="52.25" r="2.75" fill="#F5E6C8"/>
+    <circle cx="46" cy="52.25" r="2.75" fill="#F5E6C8"/>
+  </g>
+</svg>
