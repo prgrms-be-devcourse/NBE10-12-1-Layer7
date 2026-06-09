@@ -24,7 +24,7 @@ export default function MyOrders() {
                 .then((res)=>{
                     const actorId = res.data.id;
                     setMember(res.data);
-                    return apiFetch(`/api/v1/receipts?actorId=${actorId}`)
+                    return apiFetch(`/api/v1/admin/receipts`)
                 })
                 .then((data) => {
                     setRecipts(data.data);

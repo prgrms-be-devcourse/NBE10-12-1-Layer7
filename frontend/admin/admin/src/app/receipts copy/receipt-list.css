@@ -1,5 +1,0 @@
-@layer components {
-  .receipt-list {
-    @apply flex flex-col gap-3;
-  }
-}
