@@ -10,7 +10,7 @@ export function ReceiptList({receipts}:ReceiptListProps){
     return (
         <ul className="receipt-list">
             {receipts.map((receipt, index) => (
-                <ReceiptItem key={index} receipt={receipt} />
+                <ReceiptItem key={index} receipt={receipt}/>
             ))}
         </ul>
     );

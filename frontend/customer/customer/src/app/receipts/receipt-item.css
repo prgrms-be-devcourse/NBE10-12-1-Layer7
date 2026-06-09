@@ -1,6 +1,10 @@
 @layer components {
   .receipt-item {
-    @apply grid grid-cols-[auto_auto_minmax(0,1fr)_auto_auto] items-center gap-4 rounded-lg border border-coffee-border bg-coffee-card px-5 py-5 text-coffee-primary shadow-sm transition hover:border-coffee-nav-accent hover:shadow-md;
+    @apply overflow-hidden rounded-lg border border-coffee-border bg-coffee-card text-coffee-primary shadow-sm transition hover:border-coffee-nav-accent hover:shadow-md;
+  }
+
+  .receipt-summary {
+    @apply grid cursor-pointer grid-cols-[auto_auto_minmax(0,1fr)_auto_auto] items-center gap-4 px-5 py-5;
   }
 
   .receipt-item-id {
@@ -8,9 +12,9 @@
   }
 
   .receipt-item-created {
-    @apply whitespace-nowrap text-base text-coffee-secondary;
+    @apply whitespace-nowrap text-sm text-coffee-secondary;
   }
-  
+
   .receipt-item-name {
     @apply min-w-0 truncate text-base font-semibold text-coffee-primary;
   }
@@ -20,6 +24,30 @@
   }
 
   .receipt-item-status {
-    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-4 py-2 text-base font-bold text-coffee-accent;
+    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-4 py-2 text-sm font-bold text-coffee-accent;
+  }
+
+  .receipt-detail {
+    @apply border-t border-coffee-border bg-coffee-bg px-5 py-4;
+  }
+
+  .receipt-detail-list {
+    @apply flex flex-col gap-2;
+  }
+
+  .receipt-detail-item {
+    @apply grid grid-cols-[minmax(0,1fr)_120px_70px] items-center gap-4 rounded-md bg-white px-4 py-3 text-sm;
+  }
+
+  .receipt-detail-name {
+    @apply min-w-0 truncate font-semibold text-coffee-primary;
+  }
+
+  .receipt-detail-price {
+    @apply whitespace-nowrap text-right font-bold text-coffee-secondary;
+  }
+
+  .receipt-detail-quantity {
+    @apply whitespace-nowrap text-right font-semibold text-coffee-accent;
   }
 }
