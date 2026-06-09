@@ -4,7 +4,8 @@
   }
 
   .receipt-summary {
-    @apply grid cursor-pointer grid-cols-[auto_auto_minmax(0,1fr)_auto_auto] items-center gap-4 px-5 py-5;
+    @apply grid items-center gap-3 px-5 py-4;
+    grid-template-columns: 70px 115px minmax(0, 1fr) 110px 135px;
   }
 
   .receipt-item-id {
@@ -12,7 +13,7 @@
   }
 
   .receipt-item-created {
-    @apply whitespace-nowrap text-sm text-coffee-secondary;
+    @apply whitespace-nowrap text-sm font-medium text-coffee-secondary;
   }
 
   .receipt-item-name {
@@ -24,7 +25,9 @@
   }
 
   .receipt-item-status {
-    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-4 py-2 text-sm font-bold text-coffee-accent;
+    @apply justify-self-end whitespace-nowrap rounded-md bg-coffee-bg px-1 py-2 text-sm font-bold text-coffee-accent;
+    min-width: 135px;
+    text-align: center;
   }
 
   .receipt-detail {

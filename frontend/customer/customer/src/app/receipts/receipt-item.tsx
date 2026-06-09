@@ -10,7 +10,6 @@ export function ReceiptItem({receipt}:ReceiptItemProps){
     const [isOpen, setIsOpen] = useState<boolean>(false);
     function representativeProductName(items:ReceiptListItem[]){
         let repName = "";
-        // if(items.length>0)repName+=items[0].productId.toString();
         if(items.length>0)repName+= items[0].name;
         if(items.length>1)repName+=" 외 " + (items.length-1) + " 개";
         return repName;
