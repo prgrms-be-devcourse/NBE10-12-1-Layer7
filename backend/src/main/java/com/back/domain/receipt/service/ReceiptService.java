@@ -29,19 +29,18 @@ public class ReceiptService {
     public Receipt addItem(Member member, Long productId, int quantity) {
         LocalDate deliveryDate = Receipt.calcDeliveryDate();
 
-        // 상품 가격 조회
         Product product = productService.findByIdOrThrow(productId);
         int price = product.getPrice();
 
         Receipt receipt = receiptRepository
-                .findByMemberAndDeliveryDate(member, deliveryDate)
+                .findByMemberAndDeliveryDateAndStatus(member, deliveryDate, "PENDING")  // ← PENDING 체크 추가
                 .orElseGet(() -> receiptRepository.save(new Receipt(member, deliveryDate)));
 
-        receiptItemRepository.findByReceiptAndProductId(receipt, productId)
+        receiptItemRepository.findByReceiptAndProduct(receipt, product)  // ← product로 변경
                 .ifPresentOrElse(
                         item -> item.updateQuantity(item.getQuantity() + quantity),
                         () -> receiptItemRepository.save(
-                                new ReceiptItem(receipt, productId, quantity, price))
+                                new ReceiptItem(receipt, product, quantity, price))  // ← product로 변경
                 );
 
         int totalPrice = receiptItemRepository.findByReceipt(receipt)

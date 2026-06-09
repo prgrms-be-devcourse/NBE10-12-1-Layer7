@@ -1,5 +1,6 @@
 package com.back.domain.receipt.entity;
 
+import com.back.domain.product.product.entity.Product;
 import com.back.global.jpa.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -18,8 +19,9 @@ public class ReceiptItem extends BaseEntity {
     @JsonIgnore
     private Receipt receipt;
 
-    @Column(nullable = false)
-    private Long productId;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     @Column(nullable = false)
     private int quantity;
@@ -27,9 +29,9 @@ public class ReceiptItem extends BaseEntity {
     @Column(nullable = false)
     private int price;
 
-    public ReceiptItem(Receipt receipt, Long productId, int quantity, int price) {
+    public ReceiptItem(Receipt receipt, Product product, int quantity, int price) {
         this.receipt = receipt;
-        this.productId = productId;
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
