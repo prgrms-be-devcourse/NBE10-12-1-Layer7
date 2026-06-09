@@ -1,6 +1,8 @@
 package com.back.domain.receipt.dto;
 
 import com.back.domain.receipt.entity.Receipt;
+import com.back.domain.receipt.entity.ReceiptStatus;
+
 import java.util.List;
 
 public record ReceiptDto(
@@ -9,7 +11,7 @@ public record ReceiptDto(
         String address,
         String postalCode,
         String deliveryDate,
-        String status,
+        ReceiptStatus status,
         int totalPrice,
         List<ReceiptItemDto> items
 ) {
