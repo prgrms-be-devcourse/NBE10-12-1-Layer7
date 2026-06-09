@@ -1,0 +1,66 @@
+@layer components {
+  .order-page {
+    @apply w-[1120px] max-w-[calc(100vw-48px)] max-h-[calc(100vh-80px)] text-coffee-primary;
+  }
+
+  .order-block {
+    @apply grid grid-cols-[minmax(0,1.55fr)_360px] gap-5 rounded-2xl border border-coffee-border bg-coffee-bg p-5 shadow-2xl;
+  }
+
+  .order-block h2 {
+    @apply mb-3 text-xl font-bold text-coffee-primary;
+  }
+
+  .order-area {
+    @apply flex min-w-0 flex-col;
+  }
+
+  .order-list {
+    @apply min-h-0 flex-1 overflow-y-auto rounded-xl border border-coffee-border bg-coffee-card;
+    max-height: calc(min(760px, 100vh - 96px) - 86px);
+  }
+
+  .order-summary {
+    @apply flex flex-col rounded-xl border border-coffee-border bg-coffee-card p-6;
+  }
+
+  .summary-header {
+    @apply mb-5;
+  }
+
+  .summary-header h1 {
+    @apply text-2xl font-bold text-coffee-primary;
+  }
+
+  .summary-header p {
+    @apply mt-2 text-sm text-coffee-secondary;
+  }
+
+  .order-form {
+    @apply flex flex-col gap-4;
+  }
+
+  .order-label {
+    @apply mb-1.5 block text-sm font-semibold text-coffee-secondary;
+  }
+
+  .order-text-input {
+    @apply h-12 w-full rounded-md border border-coffee-border bg-white px-3 text-base text-coffee-primary outline-none transition placeholder:text-coffee-secondary/50 focus:border-coffee-nav-accent focus:ring-2 focus:ring-coffee-nav-accent/25;
+  }
+
+  .order-notice {
+    @apply rounded-lg bg-coffee-bg p-3 text-sm leading-relaxed text-coffee-secondary;
+  }
+
+  .order-price {
+    @apply mt-1 flex items-center justify-between border-t border-coffee-border pt-4 text-base text-coffee-primary;
+  }
+
+  .order-price strong {
+    @apply text-xl font-bold text-coffee-nav-accent;
+  }
+
+  .order-button {
+    @apply mt-2 h-12 w-full rounded-md bg-coffee-nav text-base font-bold text-coffee-nav-text transition hover:bg-coffee-primary;
+  }
+}
