@@ -9,8 +9,8 @@ type ReceiptListProps = {
 export function ReceiptList({receipts}:ReceiptListProps){
     return (
         <ul className="receipt-list">
-            {receipts.map((receipt, index) => (
-                <ReceiptItem key={index} receipt={receipt} />
+            {receipts.toReversed().map((receipt, index) => (
+                <ReceiptItem key={index} receipt={receipt}/>
             ))}
         </ul>
     );
