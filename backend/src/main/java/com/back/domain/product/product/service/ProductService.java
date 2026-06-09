@@ -20,6 +20,11 @@ public class ProductService {
     private final ImageRepository imageRepository;
 
 
+    public long count() {
+        return productRepository.count();
+    }
+
+
     public Product create(
             String beanName,
             int price,
