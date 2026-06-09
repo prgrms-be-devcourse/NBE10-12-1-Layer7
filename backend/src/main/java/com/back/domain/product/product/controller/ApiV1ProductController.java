@@ -1,12 +1,16 @@
 package com.back.domain.product.product.controller;
 
+import com.back.domain.product.product.dto.ProductCategoryResponse;
+import com.back.domain.product.product.dto.ProductCountResponse;
 import com.back.domain.product.product.dto.ProductDto;
 import com.back.domain.product.product.entity.Product;
+import com.back.domain.product.product.entity.ProductCategory;
 import com.back.domain.product.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -37,9 +41,16 @@ public class ApiV1ProductController {
     }
 
     @GetMapping("/count")
-    public Map<String, Long> getProductCount() {
+    public ProductCountResponse getProductCount() {
         long count = productService.count();
-        return Map.of("count", count);
+        return new ProductCountResponse(count);
+    }
+
+    @GetMapping("/categories")
+    public List<ProductCategoryResponse> getCategories() {
+        return Arrays.stream(ProductCategory.values())
+                .map(category -> new ProductCategoryResponse(category.name()))
+                .toList();
     }
 
 }
