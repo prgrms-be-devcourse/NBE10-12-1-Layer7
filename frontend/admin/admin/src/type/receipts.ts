@@ -21,3 +21,5 @@ export type ReceiptListItem = {
     quantity: number,
     price: number
 }
+
+export type OrderStatus = 'PENDING' | 'CONFIRMED' | 'SHIPPING' | 'DELIVERED' | 'CANCELLED';
