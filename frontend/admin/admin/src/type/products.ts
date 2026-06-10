@@ -1,4 +1,4 @@
-import { getUrl } from "@/lib/backend/client"
+import { getDefaultImage } from "@/lib/utils/util"
 
 export type ProductDto = {
     id : number
@@ -8,12 +8,13 @@ export type ProductDto = {
     price : number
     category : string
     imageId?: number
-    imageUrl: string | '../default-coffee-product.svg'
+    imageUrl: string,
     image: {
     id: number;
     url: string;
   };
 }
+
 export const DEFAULT_PRODUCT_DTO: ProductDto = {
   id: 0,
   createDate: "",
@@ -21,7 +22,7 @@ export const DEFAULT_PRODUCT_DTO: ProductDto = {
   beanName: "",
   price: 0,
   category: "ETHIOPIA",
-  imageUrl: '../default-coffee-product.svg',
+  imageUrl: getDefaultImage(),
   image: {
     id:1,
     url: ""
