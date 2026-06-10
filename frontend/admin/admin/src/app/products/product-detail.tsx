@@ -38,12 +38,13 @@ export default function ProductDetail({product, canClick=false, modalOff}:Produc
             imageId: 1,
           }),
         }).then((data)=>{
-            if(data?.data){
-                router.push("/products");
-                modalOff();
+            if(data.resultCode === "201-1"){
+                alert("상품을 추가했습니다.");
             }   
         }).catch((err)=>{
           console.log(err);
+        }).finally(()=>{
+            modalOff();
         })
       }
     useEffect(()=>{
@@ -52,6 +53,7 @@ export default function ProductDetail({product, canClick=false, modalOff}:Produc
     },[]);
 
     const apply = (product : ProductDto) => {
+        if (!confirm("이 내용을 적용할까요?")) return;
         console.log(price, beanName, category);
         apiFetch(`/api/v1/admin/products/${product.id}`,{
             method:"PUT",
@@ -66,27 +68,33 @@ export default function ProductDetail({product, canClick=false, modalOff}:Produc
                 imageId: 1,
             })
         }).then((data)=>{
-            if(data.resultCode === "200-1") return router.push('/products');
+            if(data.resultCode==="200-1"){
+                alert("상품을 수정했습니다.")
+            }
+                return router.push('/products');
         }).catch((err)=>{
             console.log(err);
+        }).finally(()=>{
+            modalOff();
         })
     }
     const deleteProduct = () => {
         if (!confirm("이 상품을 삭제할까요?")) return;
-
         apiFetch(`/api/v1/admin/products/${product.id}`, {
             method: "DELETE",
             credentials: "include",
         })
             .then((data) => {
-            if (data?.resultCode === "200-1" || data?.data) {
-                modalOff();
-                router.push("/products");
-            }
-            })
+                if (data.resultCode === "200-1") {
+                    alert("상품을 삭제했습니다.");
+                }
+                })
             .catch((err) => {
-            console.log(err);
-            alert("상품 삭제에 실패했습니다.");
+                console.log(err);
+                    alert("상품 삭제에 실패했습니다.");
+            })
+            .finally(()=>{
+                modalOff();
             });
     };
     return (

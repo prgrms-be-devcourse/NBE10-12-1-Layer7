@@ -57,7 +57,7 @@ export default function Page() {
           <button
             type="button"
             className="absolute inset-0 bg-coffee-nav/60"
-            aria-label="상품 수정 페이지 닫기"
+            aria-label="닫기"
             onClick={() => setIsOpen(false)}
           />
 
