@@ -63,12 +63,13 @@
   .product-detail-select {
     @apply cursor-pointer;
   }
-
+  .product-detail-delete-button,
   .product-detail-modify-button,
   .product-detail-confirm-button {
     @apply mt-2 h-10 rounded-md px-4 text-sm font-bold transition;
   }
-
+  
+  .product-detail-delete-button,
   .product-detail-modify-button {
     @apply border border-coffee-border bg-white text-coffee-secondary hover:border-coffee-nav-accent hover:text-coffee-primary;
   }
