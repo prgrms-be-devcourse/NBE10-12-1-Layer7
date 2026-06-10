@@ -39,7 +39,7 @@ public class ReceiptService {
 
         receiptItemRepository.findByReceiptAndProduct(receipt, product)  // ← product로 변경
                 .ifPresentOrElse(
-                        item -> item.updateQuantity(item.getQuantity() + quantity),
+                        item -> item.updateQuantity(quantity),
                         () -> receiptItemRepository.save(
                                 new ReceiptItem(receipt, product, quantity, price))  // ← product로 변경
                 );
