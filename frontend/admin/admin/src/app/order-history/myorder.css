@@ -1,14 +1,71 @@
-@layer components{
-    .myorder-page{
-        @apply flex min-h-screen justify-center px-6 py-16;
+@layer components {
+
+    
+    .admin-order-page {
+        @apply flex min-h-screen justify-center px-6 py-16 bg-coffee-bg;
     }
-    .myorder-owner{
-        @apply mb-3 text-2xl font-semibold text-coffee-nav-accent;
+    .admin-order-block {
+        @apply w-full max-w-4xl rounded-[36px] bg-coffee-card p-14 shadow-xl border border-coffee-border;
     }
-    .myorder-block{
-        @apply w-full max-w-3xl rounded-[36px] bg-white p-14 shadow-xl;
+    .admin-order-header {
+        @apply mb-6;
     }
-    .myorder-list-block{
-        @apply min-h-[200px] rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-6 text-neutral-400;
+    .admin-order-title {
+        @apply flex items-center gap-3 text-2xl font-semibold text-coffee-primary;
     }
+    .admin-order-count {
+        @apply rounded-full bg-coffee-nav-accent/10 px-3 py-0.5 text-sm font-medium text-coffee-nav-accent;
+    }
+    .admin-order-list {
+        @apply flex flex-col gap-4;
+    }
+    .admin-order-empty {
+        @apply py-16 text-center text-coffee-secondary;
+    }
+
+    
+    .admin-order-card {
+        @apply rounded-2xl border border-coffee-border bg-coffee-bg p-6;
+    }
+    .admin-order-card-header {
+        @apply mb-2 flex items-center justify-between;
+    }
+    .admin-order-card-meta {
+        @apply flex items-center gap-3;
+    }
+    .admin-order-id {
+        @apply mr-2 font-mono text-sm text-coffee-secondary;
+    }
+    .admin-order-email {
+        @apply font-medium text-coffee-primary;
+    }
+    .admin-order-date {
+        @apply text-sm text-coffee-secondary;
+    }
+    .admin-order-address {
+        @apply mb-3 text-sm text-coffee-secondary;
+    }
+
+    
+    .admin-order-items {
+        @apply mb-3 flex flex-col gap-1 border-t border-coffee-border pt-3;
+    }
+    .admin-order-item {
+        @apply flex justify-between text-sm text-coffee-primary;
+    }
+    .admin-order-item-detail {
+        @apply text-coffee-secondary;
+    }
+    .admin-order-total {
+        @apply text-right font-semibold text-coffee-nav-accent;
+    }
+
+    
+    .admin-order-status {
+        @apply cursor-pointer rounded-lg border px-2 py-1 text-xs font-medium outline-none transition-colors;
+    }
+    .status-pending   { @apply bg-amber-50  text-amber-700  border-amber-200;  }
+    .status-processing { @apply bg-blue-50   text-blue-700   border-blue-200;   }
+    .status-delivered { @apply bg-green-50  text-green-700  border-green-200;  }
+    .status-cancelled { @apply bg-red-50    text-red-700    border-red-200;    }
 }
