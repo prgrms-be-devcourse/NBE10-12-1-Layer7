@@ -40,7 +40,22 @@ export default function AdminOrdersPage() {
             alert("상태 변경에 실패했습니다.");
         }
     };
-
+    const handleDelete = async (id: number) =>{
+        try{
+            if(!confirm("삭제 하시겠습니까?"))return;
+            await apiFetch(`/api/v1/admin/receipts/${id}`, {
+                method: "DELETE",
+                credentials: "include",
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+            });
+            setReceipts((prev) => 
+                prev.filter((r) => r.id !== id)
+            );
+            alert("주문 내역이 삭제되었습니다.")
+        }catch{
+            alert("주문 내역 삭제 실패했습니다.")
+        }
+    }
     return (
         <BasePage>
             <div className="admin-order-page">
@@ -84,6 +99,12 @@ export default function AdminOrdersPage() {
                                                     <option key={status} value={status}>{status}</option>
                                                 ))}
                                             </select>
+                                            <button
+                                                className="admin-order-delete"
+                                                onClick={() => handleDelete(receipt.id)}
+                                            >
+                                                삭제
+                                            </button>
                                         </div>
                                     </div>
 

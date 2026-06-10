@@ -59,7 +59,11 @@
     .admin-order-total {
         @apply text-right font-semibold text-coffee-nav-accent;
     }
-
+    .admin-order-delete {
+        @apply rounded-lg border border-red-200 bg-red-50 px-2 py-1 
+            text-xs font-medium text-red-600 
+            hover:bg-red-100 transition-colors cursor-pointer;
+    }
     
     .admin-order-status {
         @apply cursor-pointer rounded-lg border px-2 py-1 text-xs font-medium outline-none transition-colors;
