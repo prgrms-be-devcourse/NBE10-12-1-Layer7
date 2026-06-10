@@ -5,8 +5,7 @@ import { OrderItem } from "./order-item";
 import { useEffect, useState } from "react";
 import { Member } from "@/type/members";
 import Summary from "./summary/page";
-import { ReceiptListItem } from "@/type/receipts";
-import { stringify } from "querystring";
+
 
 type OrderPageProps = {
     items?: CartItem[];
@@ -58,12 +57,12 @@ export default function OrderPage({
                         quantity: data.quantity
                     })
                 })
-                .then((data)=>{
-                    console.log(data);
-                })
+                .then((data)=>{})
+                .catch((error) => {
+                console.error(error);
+                });
             });
             modalOff();
-            //window.location.reload();
         }catch{
             alert("err");
         }

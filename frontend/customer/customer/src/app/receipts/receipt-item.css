@@ -53,4 +53,11 @@
   .receipt-detail-quantity {
     @apply whitespace-nowrap text-right font-semibold text-coffee-accent;
   }
+
+  .receipt-item-cancel {
+      @apply rounded-lg border border-red-200 bg-red-50 px-2 py-1
+            text-xs font-medium text-red-600
+            hover:bg-red-100 transition-colors cursor-pointer;
+  }
+
 }
