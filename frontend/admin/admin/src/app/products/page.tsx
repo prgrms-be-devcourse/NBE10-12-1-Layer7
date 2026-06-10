@@ -11,7 +11,7 @@ import ProductDetail from "./product-detail";
 
 // products.tsx
 export default function Page() {
-  const [products, setProducts] = useState<ProductDto[] | null>(null);
+  const [products, setProducts] = useState<ProductDto[] | null>([]);
   useEffect(() => {
     apiFetch(`/api/v1/products`)
       .then(setProducts);
@@ -22,8 +22,7 @@ export default function Page() {
   const setDetail = (dto: ProductDto) =>{
     setItem(dto);
     setIsOpen(true);
-  }
-  
+  };
 
   const [isOpen, setIsOpen] = useState(false)
   const [isFormOpen, setIsFormOpen] = useState(false)
@@ -57,7 +56,7 @@ export default function Page() {
           <button
             type="button"
             className="absolute inset-0 bg-coffee-nav/60"
-            aria-label="상품 수정 페이지 닫기"
+            aria-label="닫기"
             onClick={() => setIsOpen(false)}
           />
 
