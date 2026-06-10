@@ -10,7 +10,6 @@ export default function MembersPage(){
     const [members, setMembers] = useState<Member[]>();
 
     useEffect(()=>{
-        
         apiFetch(`/api/v1/admin/members`,{
             method: "GET",
             credentials: "include"
@@ -20,7 +19,7 @@ export default function MembersPage(){
            }).catch((err)=>{
             alert("목록 조회에 실패했습니다.");
            });
-    });
+    },[]);
 
     return (
     <BasePage>
