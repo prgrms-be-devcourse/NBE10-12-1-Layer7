@@ -55,6 +55,7 @@ export default function BasePage({
               <>
                 <Link href="/products">상품 목록</Link>
                 <Link href="/order-history">주문 내역</Link>
+                <Link href="/members">회원 목록</Link>
               </>
             )}
           </nav>

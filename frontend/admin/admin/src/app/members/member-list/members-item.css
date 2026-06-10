@@ -1,0 +1,23 @@
+@layer components {
+    .member-item {
+        @apply overflow-hidden rounded-lg border border-coffee-border bg-coffee-card 
+               text-coffee-primary shadow-sm transition 
+               hover:border-coffee-nav-accent hover:shadow-md;
+    }
+    .member-summary {
+        @apply grid items-center gap-4 px-5 py-4;
+        grid-template-columns: 70px 1fr 1fr 110px;
+    }
+    .member-item-id {
+        @apply whitespace-nowrap text-sm font-bold text-coffee-secondary;
+    }
+    .member-item-email {
+        @apply min-w-0 truncate text-sm font-semibold text-coffee-primary;
+    }
+    .member-item-address {
+        @apply min-w-0 truncate text-sm text-coffee-secondary;
+    }
+    .member-item-postal-code {
+        @apply whitespace-nowrap text-sm text-coffee-secondary;
+    }
+}
