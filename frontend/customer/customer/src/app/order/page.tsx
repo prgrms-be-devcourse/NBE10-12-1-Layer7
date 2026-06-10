@@ -4,20 +4,23 @@ import { CartItem } from "./cart-item";
 import { OrderItem } from "./order-item";
 import { useEffect, useState } from "react";
 import { Member } from "@/type/members";
+import Summary from "./summary/page";
+
 
 type OrderPageProps = {
     items?: CartItem[];
     onIncrease?: (productId: number) => void;
     onDecrease?: (productId: number) => void;
+    modalOff?:()=>void;
 };
 
 export default function OrderPage({
                                       items = [],
                                       onIncrease = () => {},
                                       onDecrease = () => {},
+                                      modalOff = ()=>{}
                                   }: OrderPageProps) {
     const [member, setMember] = useState<Member>();
-
     const totalPrice = items.reduce(
         (sum, item) => sum + item.product.price * item.quantity,
         0
@@ -27,10 +30,7 @@ export default function OrderPage({
         apiFetch(`/api/v1/members/my`, {
             method: "GET",
             credentials: "include",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            },
-        })
+            })
             .then((data) => {
                 const actorId = data.data;
                 return apiFetch(`/api/v1/members/me?actorId=${actorId}`);
@@ -42,7 +42,31 @@ export default function OrderPage({
                 console.error(error);
             });
     }, []);
-
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // 기본 새로고침 방지
+        try{
+            const actorId = member?.id;
+            if(!actorId)return;
+            items.map((data)=>{
+                apiFetch(`/api/v1/receipts?actorId=${actorId}`,{
+                    method:"POST",
+                    credentials:"include",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body:JSON.stringify({
+                        productId: data.product.id,
+                        quantity: data.quantity
+                    })
+                })
+                .then((data)=>{})
+                .catch((error) => {
+                console.error(error);
+                });
+            });
+            modalOff();
+        }catch{
+            alert("err");
+        }
+    }
     return (
         <section className="order-page">
             <div className="order-block">
@@ -76,9 +100,10 @@ export default function OrderPage({
                     <div className="summary-header">
                         <h1>주문 요약</h1>
                         <p>상품 요약 리스트</p>
+                        <Summary items={items}></Summary>
                     </div>
 
-                    <form className="order-form">
+                    <form onSubmit={handleSubmit} className="order-form">
                         <div>
                             <label className="order-label">이메일</label>
                             <input

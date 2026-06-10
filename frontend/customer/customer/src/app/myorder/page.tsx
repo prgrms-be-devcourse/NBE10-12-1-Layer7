@@ -9,6 +9,7 @@ import { ReceiptList } from "../receipts/receipt-list";
 export default function MyOrders() {
     const [member, setMember] = useState<Member>();
     const [receipts, setRecipts] = useState<Receipts[]>();
+    
 
     useEffect(() => {
             apiFetch(`/api/v1/members/my`,{ 
@@ -32,9 +33,25 @@ export default function MyOrders() {
                 .catch((error) => {
                     console.error(error);
                     alert("회원 정보를 불러오지 못했습니다.");
-                })}, []);
+    })}, []);
 
-
+    const handleCancel = async (receiptId: number) => {
+        try {
+            await apiFetch(`/api/v1/receipts/${receiptId}?actorId=${member?.id}`, {
+                method: "DELETE",
+                credentials: "include",
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+            });
+            setRecipts((prev) =>
+                prev?.map((r) =>
+                    r.receiptId === receiptId ? {...r, totalPrice:0, status: "CANCELLED" } : r
+                )
+            );
+            alert("주문이 취소되었습니다.");
+        } catch {
+            alert("주문 취소에 실패했습니다.");
+        }
+    };
     return (
         <BasePage>
         <div className="myorder-page">
@@ -44,7 +61,7 @@ export default function MyOrders() {
                 </div>
                 <div className="myorder-list-block">
                     {receipts && receipts.length > 0 && (
-                        <ReceiptList receipts={receipts}></ReceiptList>
+                        <ReceiptList receipts={receipts} onCancel={handleCancel} hasCancel={true}></ReceiptList>
                     )}
                 </div>
             </div>
