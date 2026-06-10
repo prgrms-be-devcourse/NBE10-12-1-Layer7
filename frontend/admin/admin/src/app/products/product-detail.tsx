@@ -1,6 +1,6 @@
 'use client';
 import { apiFetch, getUrl } from "@/lib/backend/client";
-import { getDefaultImage } from "@/lib/util";
+import { getDefaultImage } from "@/lib/utils/util";
 import {ProductDto } from "@/type/products";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
