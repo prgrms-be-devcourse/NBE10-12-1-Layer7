@@ -5,13 +5,13 @@ interface SummaryProps{
 }
 export default function Summary({items=[]} : SummaryProps){
     return (
-        <ul>
-             {/* {items ? (
-                <p className="admin-order-empty">불러오는 중...</p>
-            ) : items.length === 0 ? (
-                <p className="admin-order-empty">주문 내역이 없습니다.</p>
-            ) : (<></>)
-            } */}
+        <ul className="summary-list">
+            {items.map((item) => (
+                <li key={item.product.id} className="summary-item">
+                    <div className="summary-product-name">{item.product.name}</div>
+                    <div className="summary-product-quantity">{item.quantity}개</div>
+                </li>
+            ))}
         </ul>
     )
 

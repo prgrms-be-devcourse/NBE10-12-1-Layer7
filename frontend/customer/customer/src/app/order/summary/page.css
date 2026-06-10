@@ -1,0 +1,19 @@
+@layer components {
+    .summary-list {
+        @apply flex flex-col gap-2;
+    }
+
+    .summary-item {
+        @apply flex items-center justify-between 
+               rounded-lg border border-coffee-border 
+               bg-coffee-bg px-4 py-3;
+    }
+
+    .summary-product-name {
+        @apply text-sm font-medium text-coffee-primary;
+    }
+
+    .summary-product-quantity {
+        @apply text-sm text-coffee-secondary;
+    }
+}
