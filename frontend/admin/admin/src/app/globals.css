@@ -6,7 +6,9 @@
 @import './order/order-page.css';
 @import './order-history/page.css';
 @import './products/product-detail.css';
-
+@import './members/page.css';
+@import './members/member-list/member-list.css';
+@import './members/member-list/members-item.css';
 
 @theme {
   /* 네비게이션 배경색 → bg-coffee-nav */
