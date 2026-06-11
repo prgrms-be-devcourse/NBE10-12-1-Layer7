@@ -47,8 +47,8 @@ export default function OrderPage({
         try{
             const actorId = member?.id;
             if(!actorId)return;
-            items.map((data)=>{
-                apiFetch(`/api/v1/receipts?actorId=${actorId}`,{
+            for(const data of items){
+                await apiFetch(`/api/v1/receipts?actorId=${actorId}`,{
                     method:"POST",
                     credentials:"include",
                     headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -61,7 +61,7 @@ export default function OrderPage({
                 .catch((error) => {
                 console.error(error);
                 });
-            });
+            }
             modalOff();
         }catch{
             alert("err");
